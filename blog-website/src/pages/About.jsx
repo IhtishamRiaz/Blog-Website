@@ -1,8 +1,13 @@
 import React from 'react'
+import { Box } from '@mui/system'
 
 const About = () => {
     return (
-        <div>About</div>
+        <>
+            <Box className='about-page page'>
+                <h1>About Page</h1>
+            </Box>
+        </>
     )
 }
 
