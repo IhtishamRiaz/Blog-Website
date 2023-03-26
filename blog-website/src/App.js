@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Error from './pages/Error'
 import Policy from './pages/Policy'
+import Contact from './pages/Contact'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route exact path='/' element={<Home />} />
         <Route exact path='/about' element={<About />} />
         <Route exact path='/policy' element={<Policy />} />
+        <Route exact path='/contact' element={<Contact />} />
         <Route path='/*' element={<Error />} />
       </Routes>
 
