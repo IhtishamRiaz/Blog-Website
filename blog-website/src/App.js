@@ -7,6 +7,7 @@ import About from './pages/About'
 import Error from './pages/Error'
 import Policy from './pages/Policy'
 import Contact from './pages/Contact'
+import Signup from './components/Signup'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route exact path='/about' element={<About />} />
         <Route exact path='/policy' element={<Policy />} />
         <Route exact path='/contact' element={<Contact />} />
+        <Route exact path='/register' element={<Signup />} />
         <Route path='/*' element={<Error />} />
       </Routes>
 

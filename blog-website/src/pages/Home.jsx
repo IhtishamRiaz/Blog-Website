@@ -4,8 +4,13 @@ import { Box } from '@mui/material'
 const Home = () => {
     return (
         <>
-            <Box className='about-page page'>
-                <h1>Home Page</h1>
+            <Box className='home-page'>
+                <div className="header">
+                    <div className="my-container">
+                        <h1>Hello, Welcome to <span>Discovry Blogs</span></h1>
+                    </div>
+
+                </div>
             </Box>
         </>
     )
