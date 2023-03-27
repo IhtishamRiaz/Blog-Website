@@ -8,6 +8,7 @@
 }
 
 $primary-color: #1976D2;
+$secondary-color: #f18e95;
 
 // Helping Classes Starts
 
@@ -25,12 +26,23 @@ $primary-color: #1976D2;
     text-decoration: none;
 }
 
+.title-text {
+    h1 {
+        font-size: 38px;
+        text-align: center;
+        color: $primary-color;
+    }
+}
+
 // Helping Classes Ends
 
 nav {
     padding: 20px 0;
-    background-color: transparent;
+    background-color: #FFFF;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
 
     .my-container {
         display: flex;
@@ -48,7 +60,7 @@ nav {
 
     .nav-link {
         padding: 20px 10px;
-        color: inherit;
+        color: $secondary-color;
         text-decoration: none;
         font-size: 18px;
         font-weight: 600;
@@ -72,7 +84,7 @@ nav {
 
 .header {
     min-height: calc(100vh - 94px);
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/header-bg.jpg);
+    background: linear-gradient(rgba(25, 118, 210, 0.5), rgba(0, 0, 0, 0.5)), url(../images/header-bg.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -83,7 +95,7 @@ nav {
 
         h1 {
             color: #FFFF;
-            font-size: 44px;
+            font-size: 54px;
         }
 
         span {
@@ -96,3 +108,39 @@ nav {
 }
 
 // Header Ends
+
+// Blogs Section Starts
+
+.blogs-section {
+    padding-top: 80px;
+}
+
+.blogs-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 50px 0;
+
+    .blog-box {
+        border: 1px solid red;
+        flex-basis: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .blog-pic {
+        img {
+            width: 100%;
+        }
+    }
+}
+
+// Blogs Section Ends
+
+footer {
+    text-align: center;
+    // margin-top: 100px;
+}

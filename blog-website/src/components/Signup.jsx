@@ -1,4 +1,4 @@
-import { Typography, Paper, TextField, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Button, FormGroup, Checkbox, Modal } from '@mui/material';
+import { Typography, Paper, TextField, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Button, Modal } from '@mui/material';
 import { Box } from '@mui/system';
 import Reg from '@mui/icons-material/HowToReg';
 import LoginIcon from '@mui/icons-material/Login';
@@ -6,7 +6,8 @@ import React, { useState } from 'react';
 
 const mainBox = {
     maxWidth: "400px",
-    margin: "100px auto",
+    margin: "0 auto",
+    marginTop: "100px",
     display: "flex",
     flexDirection: "column",
     padding: "20px 30px",
@@ -42,25 +43,32 @@ const ModalBoxStyle = {
 
 const Signup = () => {
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [mobile, setMobile] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleName = (e) => {
-        setName(e.target.value);
-    }
-    const handleEmail = (e) => {
-        setEmail(e.target.value);
-    }
-    const handleMobile = (e) => {
-        setMobile(e.target.value);
-    }
-    const handlePassword = (e) => {
-        setPassword(e.target.value);
-    }
-
+    const [isSignUp, setIsSignUp] = useState(true);
     const [modalStatus, SetModalStatus] = useState(false);
+    const [inputs, setInputs] = useState({
+        name: '',
+        email: '',
+        mobile: '',
+        gender: '',
+        password: ''
+    });
+
+    const handleChange = (e) => {
+        setInputs((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }));
+    }
+    const handleSwitch = () => {
+        setIsSignUp(!isSignUp)
+        setInputs({
+            name: '',
+            email: '',
+            mobile: '',
+            gender: '',
+            password: ''
+        })
+    }
 
     const handleModalOpen = () => {
         SetModalStatus(true);
@@ -68,43 +76,67 @@ const Signup = () => {
     const handleModalClose = () => {
         SetModalStatus(false);
     }
-
-    const [gender, SetGender] = useState();
-
-    const handleGender = (e) => {
-        SetGender(e.target.value);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        handleModalOpen();
     }
 
     return (
         <>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <Paper style={mainBox} elevation="8">
                     <Box>
-                        <Typography variant='h3' textAlign="center" color={"primary"}>Sign Up</Typography>
+                        <Typography variant='h3' textAlign="center" color={"primary"}>
+                            {isSignUp ? 'Sign Up' : 'Login'}
+
+                        </Typography>
                     </Box>
                     <Box marginTop="40px">
+                        {
+                            isSignUp && <TextField type={"text"} name='name' value={inputs.name} label="Name" style={inputStyle} onChange={handleChange} />
+                        }
 
-                        <TextField type={"text"} value={name} label="Name" style={inputStyle} onChange={handleName}></TextField>
-                        <TextField type={"email"} value={email} label="Email" style={inputStyle} onChange={handleEmail}></TextField>
-                        <TextField type={"number"} value={mobile} label="Mobile" style={inputStyle} onChange={handleMobile}></TextField>
 
-                        <FormControl style={radioStyle}>
-                            <FormLabel>Gender</FormLabel>
-                            <RadioGroup row>
-                                <FormControlLabel control={<Radio />} label='Male' value='Male' onChange={handleGender}></FormControlLabel>
-                                <FormControlLabel control={<Radio />} label='Female' value='Female' onChange={handleGender}></FormControlLabel>
-                            </RadioGroup>
-                        </FormControl>
 
-                        <TextField type={"password"} value={password} label="Password" style={inputStyle} onChange={handlePassword}></TextField>
+                        <TextField type={"email"} name='email' value={inputs.email} label="Email" style={inputStyle} onChange={handleChange}></TextField>
 
-                        <FormGroup>
-                            <FormControlLabel control={<Checkbox />} label='Agree To Privacy Policy' />
-                        </FormGroup>
+
+
+                        {
+                            isSignUp && (
+                                <>
+                                    <TextField type={"number"} name='mobile' value={inputs.mobile} label="Mobile" style={inputStyle} onChange={handleChange}></TextField>
+                                    <FormControl style={radioStyle}>
+                                        <FormLabel>Gender</FormLabel>
+                                        <RadioGroup row>
+                                            <FormControlLabel control={<Radio />} label='Male' name='gender' value='Male' onChange={handleChange}></FormControlLabel>
+                                            <FormControlLabel control={<Radio />} label='Female' name='gender' value='Female' onChange={handleChange}></FormControlLabel>
+                                        </RadioGroup>
+                                    </FormControl>
+                                </>)
+                        }
+
+
+                        <TextField type={"password"} name='password' value={inputs.password} label="Password" style={inputStyle} onChange={handleChange}></TextField>
 
                         <Box style={btnContStyle}>
-                            <Button variant='contained' size='large' style={btnStyle} endIcon={<Reg />} onClick={handleModalOpen}>Sign Up</Button>
-                            <Button size='large' style={btnStyle} endIcon={<LoginIcon />}>Switch to Login</Button>
+                            <Button
+                                type='submit'
+                                variant='contained'
+                                size='large'
+                                style={btnStyle}
+                                endIcon={isSignUp ? <Reg /> : <LoginIcon />}
+                            >
+                                {isSignUp ? 'Sign Up' : 'Login'}
+                            </Button>
+
+                            <Button size='large'
+                                style={btnStyle}
+                                endIcon={isSignUp ? <LoginIcon /> : <Reg />}
+                                onClick={handleSwitch}
+                            >
+                                {isSignUp ? 'Switch to Login' : 'Switch to Sign Up'}
+                            </Button>
                         </Box>
                     </Box>
                 </Paper>
@@ -114,11 +146,11 @@ const Signup = () => {
                         <Typography variant='h3'>User Info</Typography>
 
                         <Box sx={{ textAlign: 'left', marginTop: '20px' }}>
-                            <Typography variant='body1'><b>Name: </b>{name}</Typography>
-                            <Typography variant='body1'><b>Email: </b>{email}</Typography>
-                            <Typography variant='body1'><b>Mobile: </b>{mobile}</Typography>
-                            <Typography variant='body1'><b>Gender: </b>{gender}</Typography>
-                            <Typography variant='body1'><b>Password: </b>{password}</Typography>
+                            <Typography variant='body1'><b>Name: </b>{inputs.name}</Typography>
+                            <Typography variant='body1'><b>Email: </b>{inputs.email}</Typography>
+                            <Typography variant='body1'><b>Mobile: </b>{inputs.mobile}</Typography>
+                            <Typography variant='body1'><b>Gender: </b>{inputs.gender}</Typography>
+                            <Typography variant='body1'><b>Password: </b>{inputs.password}</Typography>
                         </Box>
                     </Box>
                 </Modal>
