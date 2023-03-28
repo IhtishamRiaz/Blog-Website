@@ -93,21 +93,30 @@ nav .nav-logo {
 
 .blogs-container {
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
   flex-wrap: wrap;
+  gap: 40px;
   margin: 50px 0;
 }
 .blogs-container .blog-box {
-  border: 1px solid red;
   flex-basis: 30%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   text-align: center;
+  gap: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 300ms;
+}
+.blogs-container .blog-box:hover {
+  transform: scale(1.05);
 }
 .blogs-container .blog-pic img {
   width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 footer {

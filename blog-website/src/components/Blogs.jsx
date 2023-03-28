@@ -30,23 +30,23 @@ const Blogs = () => {
     return (
         <>
             <div className="blogs-container">
-                <div className="blog-box">
-                    <div className="blog-pic">
-                        <img src="https://picsum.photos/800/550?random=1" alt="" />
-                        <h3>Blog Title</h3>
-                        <Link>Read More Here</Link>
-                    </div>
-                </div>
                 {
-                    posts?.slice(1, 9)?.map((item) => {
+                    posts?.slice(0, 9)?.map((item) => {
                         const { id, title } = item;
                         return (
-                            <div className="blog-box">
-                            </div>
+                            <Link className="blog-box route-link" to={'/about'}>
+                                < div key={id}>
+                                    <div className="blog-pic" >
+                                        <img src="https://picsum.photos/800/550?random=1" alt="" />
+                                        <h3>{title.slice(0, 20)}</h3>
+                                        <Link>Read More Here</Link>
+                                    </div>
+                                </div>
+                            </Link >
                         )
                     })
                 }
-            </div>
+            </div >
         </>
     )
 }
