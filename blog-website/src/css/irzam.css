@@ -1,20 +1,109 @@
+/* Base style */
+.policy-page body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
 .policy-page .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    background-color: aqua;
-    line-height: 1.5;
 }
 
 .policy-page h1 {
-    font-size: 32px;
+    font-size: 36px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: red;
+}
+
+.policy-page h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 .policy-page p {
     margin-bottom: 20px;
+}
+
+.policy-page ul {
+    margin-bottom: 20px;
+}
+
+.policy-page ul li {
+    margin-bottom: 10px;
+}
+
+/* Link Styles */
+.policy-page a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.policy-page a:hover {
+    text-decoration: underline;
+}
+
+/* Form Styles */
+.policy-page form {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.policy-page form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.policy-page form input[type="text"],
+.policy-page form input[type="email"],
+.policy-page form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.policy-page form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.policy-page form input[type="submit"]:hover {
+    background-color: #0062cc;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {
+    .policy-page h1 {
+        font-size: 30px;
+    }
+
+    .policy-page h2 {
+        font-size: 20px;
+    }
+
+    .policy-page form input[type="text"],
+    .policy-page form input[type="email"],
+    .policy-page form textarea {
+        font-size: 14px;
+    }
+
+    .policy-page form input[type="submit"] {
+        font-size: 14px;
+    }
 }
