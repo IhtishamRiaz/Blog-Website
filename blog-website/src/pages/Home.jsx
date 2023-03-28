@@ -1,5 +1,6 @@
-import React from 'react'
-import { Box } from '@mui/material'
+import React from 'react';
+import { Box } from '@mui/material';
+import Blogs from '../components/Blogs';
 
 const Home = () => {
     return (
@@ -16,50 +17,7 @@ const Home = () => {
                 <div className="my-container">
                     <div className="title-text">
                         <h1>Read Our Blogs Here</h1>
-                        <div className="blogs-container">
-                            <div className="blog-box">
-                                <div className="blog-pic">
-                                    <img src="https://random.imagecdn.app/200/200" alt="" />
-                                    <h3>Blog Title</h3>
-                                    <p>Blog Link</p>
-                                </div>
-                            </div>
-                            <div className="blog-box">
-                                <div className="blog-pic">
-                                    <img src="https://random.imagecdn.app/200/200" alt="" />
-                                    <h3>Blog Title</h3>
-                                    <p>Blog Link</p>
-                                </div>
-                            </div>
-                            <div className="blog-box">
-                                <div className="blog-pic">
-                                    <img src="https://random.imagecdn.app/200/200" alt="" />
-                                    <h3>Blog Title</h3>
-                                    <p>Blog Link</p>
-                                </div>
-                            </div>
-                            <div className="blog-box">
-                                <div className="blog-pic">
-                                    <img src="https://random.imagecdn.app/200/200" alt="" />
-                                    <h3>Blog Title</h3>
-                                    <p>Blog Link</p>
-                                </div>
-                            </div>
-                            <div className="blog-box">
-                                <div className="blog-pic">
-                                    <img src="https://random.imagecdn.app/200/200" alt="" />
-                                    <h3>Blog Title</h3>
-                                    <p>Blog Link</p>
-                                </div>
-                            </div>
-                            <div className="blog-box">
-                                <div className="blog-pic">
-                                    <img src="https://random.imagecdn.app/200/200" alt="" />
-                                    <h3>Blog Title</h3>
-                                    <p>Blog Link</p>
-                                </div>
-                            </div>
-                        </div>
+                        <Blogs />
                     </div>
                 </div>
             </section>
@@ -67,4 +25,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Home;
