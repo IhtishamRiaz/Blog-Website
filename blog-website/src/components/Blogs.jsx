@@ -12,43 +12,53 @@ const Blogs = () => {
 
     const ApiUrl = 'https://jsonplaceholder.typicode.com/posts';
 
-    const fetchPosts = async (url) => {
+    const fetchPosts = (url) => {
         try {
-            const res = await axios.get(url);
+            const res = axios.get(url);
             setPosts(res.data);
 
         } catch (error) {
             setIsError(error);
         }
     }
+    console.log(posts);
 
     useEffect(() => {
         fetchPosts(ApiUrl);
     }, [])
 
-    console.log(posts);
+    const handlePaginationClick = (event, page) => {
+        console.log(page);
+    }
 
+    let counter = 0;
     return (
         <>
             <div className="blogs-container">
                 {
                     posts?.slice(0, 9)?.map((item) => {
                         const { id, title } = item;
+                        counter++;
                         return (
-                            <Link className="blog-box route-link" to={'/about'}>
-                                < div key={id}>
-                                    <div className="blog-pic" >
-                                        <img src="https://picsum.photos/800/550?random=1" alt="" />
-                                        <h3>{title.slice(0, 20)}</h3>
-                                        <Link>Read More Here...</Link>
-                                    </div>
+                            < div className="blog-box" key={id}>
+                                <div className="blog-pic" >
+                                    {/* <img src={`https://picsum.photos/800/550?random=${counter}`} alt="" /> */}
                                 </div>
-                            </Link >
+                                <h3>{title.slice(0, 20)}</h3>
+                                <Link>Read More Here...</Link>
+                            </div>
                         )
                     })
                 }
             </div >
-            <Pagination count={10} variant="outlined" shape="rounded" />
+            <Pagination
+                count={10}
+                variant="outlined"
+                shape="rounded"
+                color='primary'
+                className="pagination-btns"
+                onChange={handlePaginationClick}
+            />
         </>
     )
 }
