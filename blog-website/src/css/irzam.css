@@ -1,0 +1,19 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: aqua;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+}
