@@ -38,7 +38,7 @@ const Blogs = () => {
                     </div>
                 </div>
                 {
-                    posts?.map((item) => {
+                    posts?.slice(1, 9)?.map((item) => {
                         const { id, title } = item;
                         return (
                             <div className="blog-box">
