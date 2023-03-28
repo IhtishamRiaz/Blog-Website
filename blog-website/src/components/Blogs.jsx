@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import Pagination from '@mui/material/Pagination';
 
 
 const Blogs = () => {
@@ -47,6 +48,7 @@ const Blogs = () => {
                     })
                 }
             </div >
+            <Pagination count={10} variant="outlined" shape="rounded" />
         </>
     )
 }
