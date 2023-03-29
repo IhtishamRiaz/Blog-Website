@@ -1,0 +1,87 @@
+/* Bout CSS */
+.about-page .page{
+    margin-top: 60px;
+}
+.about-page .main-bg{
+    border-radius: 20px;
+
+background-image: url(../images/About-bg.jpg);
+min-height: calc(110vh - 94px);
+width: 95%;
+margin-left: 40px;
+background-position: center;
+background-size: cover;
+background-attachment: fixed;
+position: relative;
+}
+
+.about-page .main-heading{
+    color:black;
+    font-size: 70px;
+    letter-spacing: 1px;
+    margin-left: 77px;
+    padding-top: 14px;
+}
+.about-page .main-para{
+    color:black;
+  font-size: 30px;
+  letter-spacing: 1px;
+  margin-left: 77px;
+  padding-top: 14px;
+}
+.about-page .btn{
+    padding: 16px;
+    width: 25%;
+    color: white;
+    border-radius: 30px;
+    font-size: 16px;
+    border: none;
+    background-color: #d5ce00;
+    margin-left: 50px;
+}
+.about-page .btn-2{
+    padding: 16px;
+    width: 25%;
+    color: white;
+    border-radius: 30px;
+    margin-top: 50px;
+    font-size: 16px;
+    border: 2px solid white;
+    background-color: transparent;
+    margin-left: 40px;
+}
+.about-page .btn:hover{
+    background-color: black;
+}
+.about-page .btn-2:hover{
+    background-color: black;
+    border: none;
+}
+.about-page .section-2-heading{
+    font-size: 50px;
+    letter-spacing: 1px;
+    margin-left: 77px;
+    margin-top: 120px;
+}
+.about-page .section-2-para{
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-left: 77px;
+    padding-top: 14px;
+}
+.about-page .section-2-para2{
+    padding-top: 16px;
+    margin-left:40px ;
+}
+.about-page .sec-icon{
+    margin-left: 85px;
+    margin-top: 30px;
+}
+.about-page .sec-icon2{
+    margin-left: 15px;
+    margin-top: 30px;
+}
+.about-page .img{
+    height: auto;
+    max-width: 25%;
+}
