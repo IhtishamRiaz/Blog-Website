@@ -8,6 +8,8 @@ const Blogs = () => {
 
     const [posts, setPosts] = useState();
     const [isError, setIsError] = useState();
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(9);
 
 
     const ApiUrl = 'https://jsonplaceholder.typicode.com/posts';
@@ -22,33 +24,46 @@ const Blogs = () => {
         }
     }
 
+
     useEffect(() => {
         fetchPosts(ApiUrl);
     }, [])
 
-    console.log(posts);
+    let indexOfLastPost = postsPerPage * currentPage;
+    let indexOfFirstPost = indexOfLastPost - postsPerPage;
+    let totalPages = posts?.length;
+    let counter = 0;
 
+    const handlePaginationClick = (event, page) => {
+        setCurrentPage(page);
+    }
     return (
         <>
             <div className="blogs-container">
                 {
-                    posts?.slice(0, 9)?.map((item) => {
+                    posts?.slice(indexOfFirstPost, indexOfLastPost)?.map((item) => {
                         const { id, title } = item;
+                        counter++;
                         return (
-                            <Link className="blog-box route-link" to={'/about'}>
-                                < div key={id}>
-                                    <div className="blog-pic" >
-                                        <img src="https://picsum.photos/800/550?random=1" alt="" />
-                                        <h3>{title.slice(0, 20)}</h3>
-                                        <Link>Read More Here</Link>
-                                    </div>
+                            < div className="blog-box" key={id}>
+                                <div className="blog-pic" >
+                                    <img src={`https://picsum.photos/800/550?random=${counter}`} alt="" />
                                 </div>
-                            </Link >
+                                <h3>{title.slice(0, 20)}</h3>
+                                <Link>Read More Here...</Link>
+                            </div>
                         )
                     })
                 }
             </div >
-            <Pagination count={10} variant="outlined" shape="rounded" />
+            <Pagination
+                count={Math.ceil(totalPages / postsPerPage)}
+                variant="outlined"
+                shape="rounded"
+                color='primary'
+                className="pagination-btns"
+                onChange={handlePaginationClick}
+            />
         </>
     )
 }

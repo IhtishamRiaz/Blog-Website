@@ -128,11 +128,11 @@ nav {
         justify-content: flex-start;
         flex-direction: column;
         text-align: center;
-        gap: 20px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         border-radius: 8px;
         cursor: pointer;
         transition: all 300ms;
+        padding-bottom: 15px;
 
         &:hover {
             transform: scale(1.05);
@@ -140,6 +140,8 @@ nav {
     }
 
     .blog-pic {
+        min-height: 247px;
+
         img {
             width: 100%;
             border-top-left-radius: 8px;
@@ -153,4 +155,39 @@ nav {
 footer {
     text-align: center;
     // margin-top: 100px;
+}
+
+.pagination-btns {
+    box-shadow: none;
+}
+
+.comments-form {
+    margin-top: 100px;
+
+    form {
+        margin-top: 30px;
+    }
+
+    .comment-form-fields {
+        margin-top: 20px;
+    }
+
+}
+
+.comments-container {
+    // border: 1px solid red;
+    margin: 50px 0;
+
+    .comment-row {
+        border-bottom: 1px solid #3333;
+        padding: 30px 0;
+        margin-bottom: 5px;
+    }
+
+    .comment-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
 }

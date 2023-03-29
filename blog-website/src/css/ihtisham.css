@@ -104,14 +104,17 @@ nav .nav-logo {
   justify-content: flex-start;
   flex-direction: column;
   text-align: center;
-  gap: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 8px;
   cursor: pointer;
   transition: all 300ms;
+  padding-bottom: 15px;
 }
 .blogs-container .blog-box:hover {
   transform: scale(1.05);
+}
+.blogs-container .blog-pic {
+  min-height: 247px;
 }
 .blogs-container .blog-pic img {
   width: 100%;
@@ -121,4 +124,33 @@ nav .nav-logo {
 
 footer {
   text-align: center;
+}
+
+.pagination-btns {
+  box-shadow: none;
+}
+
+.comments-form {
+  margin-top: 100px;
+}
+.comments-form form {
+  margin-top: 30px;
+}
+.comments-form .comment-form-fields {
+  margin-top: 20px;
+}
+
+.comments-container {
+  margin: 50px 0;
+}
+.comments-container .comment-row {
+  border-bottom: 1px solid rgba(51, 51, 51, 0.2);
+  padding: 30px 0;
+  margin-bottom: 5px;
+}
+.comments-container .comment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }/*# sourceMappingURL=ihtisham.css.map */
