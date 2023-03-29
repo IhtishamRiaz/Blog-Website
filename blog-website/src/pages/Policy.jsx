@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box } from '@mui/system';
-import myImage from '../images/hustle.jpg';
+// import myImage from '../images/hustle.jpg';
 
 const Policy = () => {
     return (
         <>
             <Box className='policy-page page'>
-                <img className='hustle' src={myImage} alt="hustle" />
+                <img className='hustle' src="../images/hustle.jpg" alt="hustle" />
                 <h1>Policy Page</h1>
                 <p>
                     At our blog site, we are committed to protecting your privacy. This Privacy
