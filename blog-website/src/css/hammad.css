@@ -1,32 +1,34 @@
 /* Bout CSS */
-.about-page .main-bg{
+.about-page .main-bg {
     border-radius: 20px;
 
-background-image: url(../images/About-bg.jpg);
-min-height: calc(110vh - 94px);
-width: 95%;
-margin-left: 40px;
-background-position: center;
-background-size: cover;
-background-attachment: fixed;
-position: relative;
+    background-image: url(../images/About-bg.jpg);
+    min-height: calc(110vh - 94px);
+    width: 95%;
+    margin-left: 40px;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
 }
 
-.about-page .main-heading{
-    color:black;
+.about-page .main-heading {
+    color: black;
     font-size: 70px;
     letter-spacing: 1px;
     margin-left: 77px;
     padding-top: 14px;
 }
-.about-page .main-para{
-    color:black;
-  font-size: 30px;
-  letter-spacing: 1px;
-  margin-left: 77px;
-  padding-top: 14px;
+
+.about-page .main-para {
+    color: black;
+    font-size: 30px;
+    letter-spacing: 1px;
+    margin-left: 77px;
+    padding-top: 14px;
 }
-.about-page .btn{
+
+.about-page .btn {
     padding: 16px;
     width: 25%;
     color: white;
@@ -36,7 +38,8 @@ position: relative;
     background-color: #d5ce00;
     margin-left: 50px;
 }
-.about-page .btn-2{
+
+.about-page .btn-2 {
     padding: 16px;
     width: 25%;
     color: white;
@@ -47,65 +50,174 @@ position: relative;
     background-color: transparent;
     margin-left: 40px;
 }
-.about-page .btn:hover{
+
+.about-page .btn:hover {
     background-color: black;
 }
-.about-page .btn-2:hover{
+
+.about-page .btn-2:hover {
     background-color: black;
     border: none;
 }
-.about-page .section-main{
+
+.about-page .section-main {
     display: flex;
     justify-content: space-around;
 }
-.about-page .section-2-heading{
+
+.about-page .section-2-heading {
     font-size: 50px;
     letter-spacing: 1px;
     margin-left: 77px;
     margin-top: 120px;
 }
-.about-page .section-2-para{
+
+.about-page .section-2-para {
     font-size: 14px;
     letter-spacing: 1px;
     margin-left: 17px;
     padding-top: 18px;
 }
-.about-page .section-2-para2{
+
+.about-page .section-2-para2 {
     padding-top: 16px;
-    margin-left:40px ;
+    margin-left: 40px;
 }
-.about-page .sec-icon{
+
+.about-page .sec-icon {
     margin-left: 35px;
     margin-top: 30px;
 }
-.about-page .sec-icon2{
+
+.about-page .sec-icon2 {
     margin-left: 15px;
     margin-top: 30px;
 }
 
-.about-page .sec-3-main{
+.about-page .sec-3-main {
     display: flex;
     justify-content: space-around;
-    background-color:#f8f5f5;
+    background-color: #f8f5f5;
     margin-top: 100px;
     height: 400px;
 }
-.about-page .sec-3-img{
+
+.about-page .sec-3-img {
     padding-top: 55px;
     margin-left: 80px;
 }
-.about-page .img{
+
+.about-page .img {
     height: 300px;
     max-width: 100%;
     border-radius: 16px;
 }
-.about-page .sec-3-heading{
+
+.about-page .sec-3-heading {
     letter-spacing: 1px;
     padding-top: 67px;
 }
-.about-page .sec-3-paragraph{
+
+.about-page .sec-3-paragraph {
     padding-top: 30px;
     font-size: 15px;
     letter-spacing: 1px;
-    line-height:1.9em;
+    line-height: 1.9em;
+}
+
+.about-page .sec-4-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.about-page .card {
+    border: 1px solid rgb(234, 233, 233);
+    width: 27%;
+    text-align: center;
+    margin: 40px;
+}
+
+.about-page .card-1 {
+    height: auto;
+    width: 100%;
+}
+
+.about-page .card-1-head {
+    margin: 8px;
+}
+
+.about-page .sec-4-container2 {
+    display: flex;
+}
+
+.about-page .Sec-5 {
+    background-color: #f7f7f7;
+    height: auto;
+}
+
+.about-page .sec-5-paragraph {
+    font-size: 14px;
+    line-height: 1.9em;
+    margin-top: 28px;
+    margin-left: 90px;
+}
+
+.about-page .sec-5-head {
+    letter-spacing: 1px;
+    margin-left: 90px;
+    padding-top: 48px;
+}
+
+.about-page .sec-5-para {
+    font-size: 12;
+    margin-left: 40px;
+}
+
+.about-page .inputfield {
+    display: flex;
+    margin: 30px;
+    margin-left: 90px;
+    background-color: white;
+    padding: 16px 195px;
+}
+
+.about-page .inputfield:hover {
+    background-color: #f7f7f7;
+}
+
+.about-page .main-container-5 {
+    display: flex;
+}
+
+.about-page .inputfield-2 {
+    margin-left: -164px;
+    display: flex;
+}
+
+.about-page .inputfield-para {
+    margin-left: 25px;
+}
+.about-page .sec-6{
+    margin: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+.about-page .sec-6-heading{
+    padding-top: 18px;
+}
+.about-page .sec-6-input{
+    padding:14px 28px;
+    margin: 6px;
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid rgb(114, 110, 110);
+}
+.about-page .sec-6-btn{
+    padding:14px 28px;
+    width: 100%;
+    margin: 6px;
+    border-radius: 18px;
+    border: none;
+    background-color: black;
+    color: white;
 }
