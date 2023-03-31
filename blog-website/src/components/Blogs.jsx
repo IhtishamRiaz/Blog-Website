@@ -49,7 +49,7 @@ const Blogs = () => {
                                 <div className="blog-pic" >
                                     <img src={`https://picsum.photos/800/550?random=${counter}`} alt="" />
                                 </div>
-                                <h3>{title.slice(0, 20)}</h3>
+                                <h3>{title.slice(0, 20) + '...'}</h3>
                                 <Link>Read More Here...</Link>
                             </div>
                         )

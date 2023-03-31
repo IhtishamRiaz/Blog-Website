@@ -33,39 +33,39 @@ const About = () => {
                             this: 'Love your neighbor as yourself.' There is no commandment <br />
                             greater than these" (Mark 12:29-31).
                         </p>
-                   
-                    <div className='section-2-para2'>
-                        <p className='section-2-para'>Plan a visit</p>
-                        <p className='section-2-para'>Find a campus</p>
-                        <p className='section-2-para'>Contect us</p>
+
+                        <div className='section-2-para2'>
+                            <p className='section-2-para'>Plan a visit</p>
+                            <p className='section-2-para'>Find a campus</p>
+                            <p className='section-2-para'>Contect us</p>
+                        </div>
+                        <div className='sect-icons'>
+                            <FacebookRoundedIcon className='sec-icon' color='black' fontSize='large' />
+                            <InstagramIcon className='sec-icon2' color='black' fontSize='large' />
+                            <YouTubeIcon className='sec-icon2' color='black' fontSize='large' />
+                        </div>
                     </div>
-                    <div className='sect-icons'>
-                        <FacebookRoundedIcon className='sec-icon' color='black' fontSize='large' />
-                        <InstagramIcon className='sec-icon2' color='black' fontSize='large' />
-                        <YouTubeIcon className='sec-icon2' color='black' fontSize='large' />
-                    </div>
-                </div>
-                <div className='about-video'>
-                <iframe width="440" height="280" src="https://www.youtube.com/embed/0h3FaS4E-7U" title="YouTube 
+                    <div className='about-video'>
+                        <iframe width="440" height="280" src="https://www.youtube.com/embed/0h3FaS4E-7U" title="YouTube 
                   video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted- 
                    media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-               </div>
-             </div>
-             <div className='sec-3-main'>
-                <div className='sec-3-img'>
-                <img className='img' src={img} alt=''/>
+                    </div>
                 </div>
-                <div className='sec-3-para'>
-                    <h3 className='sec-3-heading'>Robert Wachs, Lead Pastor</h3>
-                <p className='sec-3-paragraph'>Roberts Wachs is the Lead Pastor at Newbreak Church. When he is 
-                    isn't speaking at our <br />
-                     Tierrasanta campus, he is visiting our other campuses with his wife Lisa in Scripps Ranch  
-                      and <br /> Ocean Beach, encouraging their pastors and empowering their people. He's been 
-                       at Newbreak <br /> Church for more than 20 years and is excited for the future, as we 
-                        connect people with God <br /> through authentic relationships to serve communities. 
-                           </p>
+                <div className='sec-3-main'>
+                    <div className='sec-3-img'>
+                        <img className='img' src={img} alt='' />
+                    </div>
+                    <div className='sec-3-para'>
+                        <h3 className='sec-3-heading'>Robert Wachs, Lead Pastor</h3>
+                        <p className='sec-3-paragraph'>Roberts Wachs is the Lead Pastor at Newbreak Church. When he is
+                            isn't speaking at our <br />
+                            Tierrasanta campus, he is visiting our other campuses with his wife Lisa in Scripps Ranch
+                            and <br /> Ocean Beach, encouraging their pastors and empowering their people. He's been
+                            at Newbreak <br /> Church for more than 20 years and is excited for the future, as we
+                            connect people with God <br /> through authentic relationships to serve communities.
+                        </p>
+                    </div>
                 </div>
-             </div>
 
 
             </Box>

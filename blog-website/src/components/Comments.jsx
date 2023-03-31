@@ -8,32 +8,10 @@ const Comments = () => {
         name: '',
         email: '',
         commentText: '',
+        commentTime: '',
     });
     const [commentsArray, setCommentsArray] = useState([]);
-
-    const handleChange = (e) => {
-        let idSet = 1;
-        setCommentInput((prevState) => ({
-            ...prevState,
-            ['id']: idSet,
-            [e.target.name]: e.target.value
-        }));
-        idSet++;
-    }
-
-    const handleCommentSubmit = (e) => {
-        e.preventDefault();
-        setCommentInput({
-            id: '',
-            name: '',
-            email: '',
-            commentText: '',
-        });
-        setCommentsArray([
-            ...commentsArray, commentInput
-        ])
-    }
-    console.log(commentsArray);
+    const [commentTime, setCommentTime] = useState('');
 
     const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
     ];
@@ -53,6 +31,31 @@ const Comments = () => {
 
     let monthName = monthList[month];
     let properDate = monthName + " " + day + ", " + year + " at " + hour + ':' + minute + timeSuffix;
+
+    const handleChange = (e) => {
+        setCommentTime(properDate);
+
+        setCommentInput((prevState) => ({
+            ...prevState,
+            ['id']: Math.floor(Math.random() * 100000),
+            [e.target.name]: e.target.value,
+            ['commentTime']: commentTime
+        }));
+    }
+
+    const handleCommentSubmit = (e) => {
+        e.preventDefault();
+        setCommentInput({
+            id: '',
+            name: '',
+            email: '',
+            commentText: '',
+            commentTime: '',
+        });
+        setCommentsArray([
+            ...commentsArray, commentInput
+        ])
+    }
 
     return (
         <>
@@ -109,12 +112,12 @@ const Comments = () => {
                     <div className="comments-container">
                         {
                             commentsArray.map((elem) => {
-                                const { name, commentText } = elem;
+                                const { name, commentText, id, commentTime } = elem;
                                 return (
-                                    <div className="comment-row">
+                                    <div className="comment-row" key={id}>
                                         <div className="comment-header">
                                             <h3>{name}</h3>
-                                            <p>{properDate}</p>
+                                            <p>{commentTime}</p>
                                         </div>
                                         <div className="comment-content">
                                             <p>{commentText}</p>
