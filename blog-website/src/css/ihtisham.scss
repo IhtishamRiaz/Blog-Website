@@ -163,7 +163,7 @@ footer {
 }
 
 .comments-form {
-    margin-top: 100px;
+    margin-top: 50px;
 
     form {
         margin-top: 30px;
@@ -305,3 +305,34 @@ footer {
 }
 
 // Footer Ends
+
+// Post Page Starts
+
+.post-page {
+    margin-top: 50px;
+
+    .title-text {
+        h1 {
+            font-size: 32px;
+        }
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    p {
+        margin-bottom: 12px;
+        line-height: 28px;
+    }
+
+    .post-img {
+        margin: 50px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+// Post Page Ends

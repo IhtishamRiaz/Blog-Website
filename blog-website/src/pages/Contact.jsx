@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
 import { Button, TextField } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -7,6 +7,11 @@ import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Contact = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     const [contactInputs, setContactInputs] = useState({
         name: '',
         email: '',
