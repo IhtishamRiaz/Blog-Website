@@ -45,7 +45,7 @@ const Blogs = () => {
                         const { id, title } = item;
                         counter++;
                         return (
-                            <Link className="blog-box" key={id} to={`post/${counter}`}>
+                            <Link className="blog-box route-link" key={id} to={`post/${counter}`}>
                                 <div className="blog-pic" >
                                     <img src={`https://picsum.photos/800/550?random=${counter}`} alt="" />
                                 </div>

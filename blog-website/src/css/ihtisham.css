@@ -111,6 +111,9 @@ nav .nav-logo {
   transition: all 300ms;
   padding-bottom: 15px;
 }
+.blogs-container .blog-box p {
+  color: #1976D2;
+}
 .blogs-container .blog-box:hover {
   transform: scale(1.05);
 }
