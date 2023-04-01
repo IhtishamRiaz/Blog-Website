@@ -7,18 +7,100 @@
     padding: 0;
 }
 
-.policy-page .hustle {
-    align-items: center;
-    height: 350px;
-    width: 1100px;
-    object-fit: cover;
-    border-radius: 10px;
+.policy-page .bg {
+    background-image: url('../images/policy-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 900px;
+    background-attachment: fixed;
+}
+
+.policy-page .bg h1 {
+    color: #ccc;
+    text-align: center;
+    font-size: 90px;
+    text-shadow: 2px 2px 5px black;
+}
+
+.policy-page .bg p {
+    color: #ccc;
+    text-align: center;
+    padding: 10px 500px 0px 500px;
+    font-size: 20px;
+    text-shadow: 2px 2px 1px black;
+}
+
+.policy-page .sec-1 .row{
+    display: flex;
+    justify-content: center;
+    padding: 150px;
+    background-color: #e3dcd2;
+}
+
+.policy-page .sec-1 .row-gap{
+    padding-left: 50px;
+}
+
+.policy-page .info{
+    height: 500px;
+    border: 5px solid rgb(109, 70, 25);
+}
+
+.policy-page .info-border{
+    height: 504px;
+    border: 2px solid rgb(116, 116, 116);
+}
+
+.policy-page .sec-1 h2, p {
+    text-align: center;
+    padding-top: 20px;
+    color: #332f29 ;
+}
+
+.policy-page .sec-2 {
+    background-image: url('../images/security.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 700px;
+}
+
+.policy-page .sec-2 h2 {
+    color: aliceblue;
+    text-align: center;
+    font-size: 30px;
+    padding: 100px 1100px 0px 30px ;
+    text-shadow: 2px 2px 5px black;
+    margin-top: auto;
+}
+
+.policy-page .sec-2 p {
+    color: aliceblue;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 1100px 10px 30px ;
+    text-shadow: 2px 2px 4px black;
 }
 
 .policy-page .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+}
+
+.policy-page .sec-3{
+    background-color: #161513;
+}
+.policy-page .sec-3 h2{
+    margin: 0;
+    padding-top: 50px;
+    color: aliceblue;
+    text-align: center;
+}
+.policy-page .sec-3 p{
+    color: aliceblue;
+    padding-bottom: 50px;
 }
 
 .policy-page h1 {
