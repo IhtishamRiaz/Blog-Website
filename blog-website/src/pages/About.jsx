@@ -75,12 +75,15 @@ const About = () => {
                         </p>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div className='sec-4-container'>
                     <div className='card'>
                         <img className='card-1' src={card1} alt="" />
                         <h2 className='card-1-head'>Mike Quinn</h2>
                         <p className='card-1-head'>Legacy Pastor</p>
                     </div>
+=======
+>>>>>>> a8943aebbaf25842b6044957e976bd52d2b786eb
 
                     <div className='card'>
                         <img className='card-1' src={card2} alt="" />
