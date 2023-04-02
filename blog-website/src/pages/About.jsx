@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Box } from '@mui/system'
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import AddIcon from '@mui/icons-material/Add';
 import img from '../images/Robert.jpg'
+import card1 from '../images/card-1.jpg'
+import card2 from '../images/card-2.jpg'
+import card3 from '../images/card-3.jpg'
+import card4 from '../images/card-4.jpg'
+import card5 from '../images/card-5.jpg'
+
+
+
 
 const About = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <>
             <Box className='about-page page'>
@@ -66,6 +80,94 @@ const About = () => {
                         </p>
                     </div>
                 </div>
+                <div className='sec-4-container'>
+                    <div className='card'>
+                        <img className='card-1' src={card1} alt="" />
+                        <h2 className='card-1-head'>Mike Quinn</h2>
+                        <p className='card-1-head'>Legacy Pastor</p>
+                    </div>
+
+                    <div className='card'>
+                        <img className='card-1' src={card2} alt="" />
+                        <h2 className='card-1-head'>JoAnn Johnson</h2>
+                        <p className='card-1-head'>Executive Pastor Of Ministry</p>
+                    </div>
+
+                    <div className='card'>
+                        <img className='card-1' src={card3} alt="" />
+                        <h2 className='card-1-head'>Lisa Wachs</h2>
+                        <p className='card-1-head'>Exceutive Director Of Communications</p>
+                    </div>
+                </div>
+                <div className='sec-4-container2'>
+                    <div className='card'>
+                        <img className='card-1' src={card4} alt="" />
+                        <h2 className='card-1-head'>Jared Johnson</h2>
+                        <p className='card-1-head'>Scripps Ranch Campous Pastor</p>
+                    </div>
+                    <div className='card'>
+                        <img className='card-1' src={card5} alt="" />
+                        <h2 className='card-1-head'>Markus Witherspoon</h2>
+                        <p className='card-1-head'>Tierrasanta Pastor</p>
+                    </div>
+                </div>
+                <div className='Sec-5'>
+                    <h2 className='sec-5-head'>These Core Beliefs are intended to be the basis of fellowship.</h2>
+                    <p className='sec-5-paragraph'>There will always be peripheral doctrines upon which committed followers of Christ disagree, but the core beliefs are non-negotiable. WE BELIEVE:The <br />
+                        Bible is the inspired Word of God. There is one true God. Jesus Christ is the Son of God. All men are sinners and are in need of a Savior, Jesus Christ. <br />
+                        Salvation is through faith in Christ alone, and is given by God's grace. The Holy Spirit is given to all believers.</p>
+                    <div className='main-container-5'>
+                        <div className='input-main'>
+                            <div className='inputfield'>
+                                <div className='inputfield-2'>
+                                    <AddIcon />
+                                    <p className='inputfield-para'>The Bible</p>
+                                </div>
+                            </div>
+                            <div className='inputfield'>
+                                <div className='inputfield-2'>
+                                    <AddIcon />
+                                    <p className='inputfield-para'>God</p>
+                                </div>
+                            </div>
+                            <div className='inputfield'>
+                                <div className='inputfield-2'>
+                                    <AddIcon />
+                                    <p className='inputfield-para'>Jesus</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div className='inputfield'>
+                                <div className='inputfield-2'>
+                                    <AddIcon />
+                                    <p className='inputfield-para'>Salvation</p>
+                                </div>
+                            </div>
+                            <div className='inputfield'>
+                                <div className='inputfield-2'>
+                                    <AddIcon />
+                                    <p className='inputfield-para'>The Holy Spirit</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='sec-6'>
+                        <div>
+                            <h2 className='sec-6-heading'>Subscribe to Weekly All-Church Updates</h2>
+                            <p>Newbreak Church partners with you and your family. Every week we send out an email providing <br />
+                                helpful links to the week's content, guides for kids and students so they can follow along at home, <br />
+                                as well as updated news and information that are important to Newbreak Church as a whole and <br />
+                                specific to our campuses across San Diego County.</p>
+                        </div>
+                        <div>
+                            <input className='sec-6-input' type="text" placeholder='Name' /> <br />
+                            <input className='sec-6-input' type="text" placeholder='Email-Address' /> <br />
+                            <button className='sec-6-btn' type='submit'>Subscribe Now</button>
+                        </div>
+                    </div>
+                </div>
+
             </Box>
         </>
     )

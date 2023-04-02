@@ -29,9 +29,12 @@ const Comments = () => {
             email: '',
             commentText: '',
         });
-        setCommentsArray([
-            ...commentsArray, commentInput
-        ])
+        if (commentInput.name && commentInput.email && commentInput.commentText) {
+
+            setCommentsArray([
+                ...commentsArray, commentInput
+            ])
+        }
     }
     console.log(commentsArray);
 
@@ -56,75 +59,73 @@ const Comments = () => {
 
     return (
         <>
-            <div className="page">
-                <div className="my-container">
-                    <div className="comments-form">
-                        <div className="title-text">
-                            <h1>Comments</h1>
-                        </div>
-                        <form onSubmit={handleCommentSubmit}>
-                            <TextField
-                                name='name'
-                                type='text'
-                                label="Name"
-                                variant="outlined"
-                                fullWidth
-                                className='form-fields'
-                                value={commentInput.name}
-                                onChange={handleChange}
-                            />
-                            <TextField
-                                name='email'
-                                type='email'
-                                label="Email"
-                                variant="outlined"
-                                fullWidth
-                                className='comment-form-fields'
-                                value={commentInput.email}
-                                onChange={handleChange}
-                            />
-                            <TextField
-                                name='commentText'
-                                label="Comment"
-                                variant="outlined"
-                                fullWidth
-                                multiline
-                                rows={8}
-                                className='comment-form-fields'
-                                value={commentInput.commentText}
-                                onChange={handleChange}
-                            />
-                            <Button
-                                variant="contained"
-                                type='submit'
-                                size='large'
-                                className='comment-form-fields'
-                            >
-                                Comment
-                            </Button>
-                        </form>
+            <div className="my-container">
+                <div className="comments-form">
+                    <div className="title-text">
+                        <h1>Comments</h1>
                     </div>
+                    <form onSubmit={handleCommentSubmit}>
+                        <TextField
+                            name='name'
+                            type='text'
+                            label="Name"
+                            variant="outlined"
+                            fullWidth
+                            className='form-fields'
+                            value={commentInput.name}
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            name='email'
+                            type='email'
+                            label="Email"
+                            variant="outlined"
+                            fullWidth
+                            className='comment-form-fields'
+                            value={commentInput.email}
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            name='commentText'
+                            label="Comment"
+                            variant="outlined"
+                            fullWidth
+                            multiline
+                            rows={8}
+                            className='comment-form-fields'
+                            value={commentInput.commentText}
+                            onChange={handleChange}
+                        />
+                        <Button
+                            variant="contained"
+                            type='submit'
+                            size='large'
+                            className='comment-form-fields'
+                        >
+                            Comment
+                        </Button>
+                    </form>
+                </div>
 
-                    {/* Comments Container */}
-                    <div className="comments-container">
-                        {
-                            commentsArray.map((elem) => {
-                                const { name, commentText } = elem;
-                                return (
-                                    <div className="comment-row">
-                                        <div className="comment-header">
-                                            <h3>{name}</h3>
-                                            <p>{properDate}</p>
-                                        </div>
-                                        <div className="comment-content">
-                                            <p>{commentText}</p>
-                                        </div>
+                {/* Comments Container */}
+                <div className="comments-container">
+                    {
+                        commentsArray.map((elem) => {
+                            const { name, commentText } = elem;
+                            return (
+                                <div className="comment-row">
+                                    <div className="comment-header">
+                                        <h3>{name}</h3>
+                                        <p>{properDate}</p>
                                     </div>
-                                )
-                            })
-                        }
+                                    <div className="comment-content">
+                                        <p>{commentText}</p>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
 
-                    </div>
                 </div>
             </div>
         </>
