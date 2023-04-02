@@ -66,8 +66,6 @@ const About = () => {
                         </p>
                     </div>
                 </div>
-
-
             </Box>
         </>
     )
