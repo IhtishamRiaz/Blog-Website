@@ -284,6 +284,13 @@ footer a {
   max-width: 100%;
 }
 
+.error-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 @media (max-width: 1250px) {
   html {
     font-size: 90%;

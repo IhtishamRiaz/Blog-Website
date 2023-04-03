@@ -355,6 +355,17 @@ footer {
 
 // Post Page Ends
 
+// Error Page Starts
+
+.error-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+// Error Page Ends
+
 // Media Querry
 @media (max-width: 1250px) {
     html {
