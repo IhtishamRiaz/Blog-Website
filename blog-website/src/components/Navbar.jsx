@@ -2,9 +2,15 @@ import { Avatar, Button } from '@mui/material'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Reg from '@mui/icons-material/HowToReg';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
 const Navbar = () => {
     const [isLogin, setIsLogin] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const menuToggle = () => {
+        setIsMenuOpen(!isMenuOpen)
+    }
     return (
         <>
             <nav>
@@ -12,18 +18,19 @@ const Navbar = () => {
                     <div>
                         <Link to='/' className="nav-logo">Discovery Blogs</Link>
                     </div>
-                    <div className="nav-links-container">
+                    <div className={isMenuOpen ? 'nav-container-mobile' : 'nav-links-container'}>
                         <ul>
-                            <li><Link to='/' className='nav-link'>Home</Link></li>
-                            <li><Link to='/about' className='nav-link'>About</Link></li>
-                            <li><Link to='/policy' className='nav-link'>Policy</Link></li>
-                            <li><Link to='/contact' className='nav-link'>Contact</Link></li>
+                            <li onClick={menuToggle}><Link to='/' className='nav-link'>Home</Link></li>
+                            <li onClick={menuToggle}><Link to='/about' className='nav-link'>About</Link></li>
+                            <li onClick={menuToggle}><Link to='/policy' className='nav-link'>Policy</Link></li>
+                            <li onClick={menuToggle}><Link to='/contact' className='nav-link'>Contact</Link></li>
                         </ul>
                     </div>
                     <div className="nav-btns">
                         {
-                            isLogin ? <Avatar sx={{ width: 46, height: 46 }} src="/broken-image.jpg" /> : <Link to='/register' className='route-link'><Button variant="outlined" endIcon={<Reg />} size='large'>Sign Up</Button></Link>
+                            isLogin ? <Avatar sx={{ width: 46, height: 46 }} src="/broken-image.jpg" /> : <Link to='/register' className='route-link'><Button variant="outlined" endIcon={<Reg />}>Sign Up</Button></Link>
                         }
+                        <MenuRoundedIcon className='menu-btn' onClick={menuToggle} />
                     </div>
                 </div>
             </nav>

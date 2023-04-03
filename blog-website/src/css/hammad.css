@@ -1,91 +1,94 @@
 /* Bout CSS */
 .about-page .main-bg {
     border-radius: 20px;
-
-    background-image: url(../images/About-bg.jpg);
-    min-height: calc(110vh - 94px);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../images/About-bg.jpg);
+    padding: 3.125rem;
     width: 95%;
-    margin-left: 40px;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
     position: relative;
 }
 
+.about-page .main-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+}
+
 .about-page .main-heading {
     color: black;
-    font-size: 70px;
+    font-size: 4.375rem;
     letter-spacing: 1px;
-    margin-left: 77px;
-    padding-top: 14px;
+    padding-top: 70px;
 }
 
 .about-page .main-para {
     color: black;
-    font-size: 30px;
+    font-size: 1.875rem;
     letter-spacing: 1px;
-    margin-left: 77px;
     padding-top: 14px;
 }
 
 .about-page .btn {
-    padding: 16px;
-    width: 25%;
+    padding: 1rem 2.5rem;
     color: white;
     border-radius: 30px;
     font-size: 16px;
     border: none;
     background-color: #d5ce00;
-    margin-left: 50px;
+    border: 2px solid #d5ce00;
+    transition: all 300ms;
+    cursor: pointer;
 }
 
 .about-page .btn-2 {
-    padding: 16px;
-    width: 25%;
+    padding: 1rem 2.5rem;
     color: white;
     border-radius: 30px;
-    margin-top: 50px;
     font-size: 16px;
     border: 2px solid white;
     background-color: transparent;
-    margin-left: 40px;
+    transition: all 300ms;
+    cursor: pointer;
 }
 
 .about-page .btn:hover {
     background-color: black;
+    border: 2px solid black;
 }
 
 .about-page .btn-2:hover {
     background-color: black;
-    border: none;
+    border: 2px solid black;
 }
 
 .about-page .section-main {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
 }
 
 .about-page .section-2-heading {
     font-size: 50px;
     letter-spacing: 1px;
-    margin-left: 77px;
     margin-top: 120px;
 }
 
 .about-page .section-2-para {
     font-size: 14px;
     letter-spacing: 1px;
-    margin-left: 17px;
     padding-top: 18px;
 }
 
 .about-page .section-2-para2 {
     padding-top: 16px;
-    margin-left: 40px;
 }
 
 .about-page .sec-icon {
-    margin-left: 35px;
     margin-top: 30px;
 }
 
@@ -95,16 +98,15 @@
 }
 
 .about-page .sec-3-main {
-    display: flex;
-    justify-content: space-around;
     background-color: #f8f5f5;
     margin-top: 100px;
-    height: 400px;
+    padding: 55px 0;
 }
 
-.about-page .sec-3-img {
-    padding-top: 55px;
-    margin-left: 80px;
+.sec-3-main .my-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .about-page .img {
@@ -114,8 +116,8 @@
 }
 
 .about-page .sec-3-heading {
+    font-size: 2.1875rem;
     letter-spacing: 1px;
-    padding-top: 67px;
 }
 
 .about-page .sec-3-paragraph {
@@ -127,14 +129,22 @@
 
 .about-page .sec-4-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 70px 0;
 }
 
 .about-page .card {
+    flex-basis: 30%;
     border: 1px solid rgb(234, 233, 233);
-    width: 27%;
     text-align: center;
-    margin: 40px;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+.about-page .card:hover {
+    transform: scale(1.05);
 }
 
 .about-page .card-1 {
@@ -151,73 +161,138 @@
 }
 
 .about-page .Sec-5 {
-    background-color: #f7f7f7;
-    height: auto;
+    background-color: #f8f5f5;
 }
 
 .about-page .sec-5-paragraph {
     font-size: 14px;
     line-height: 1.9em;
     margin-top: 28px;
-    margin-left: 90px;
 }
 
 .about-page .sec-5-head {
     letter-spacing: 1px;
-    margin-left: 90px;
     padding-top: 48px;
 }
 
 .about-page .sec-5-para {
     font-size: 12;
-    margin-left: 40px;
 }
 
 .about-page .inputfield {
     display: flex;
-    margin: 30px;
-    margin-left: 90px;
     background-color: white;
-    padding: 16px 195px;
+    padding: 1rem 12.1875rem;
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: all 300ms;
 }
 
 .about-page .inputfield:hover {
-    background-color: #f7f7f7;
+    background-color: #a8a8a8;
 }
 
-.about-page .main-container-5 {
+.about-page .input-main {
     display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.input-main .inputfield {
+    flex-basis: 30%;
 }
 
 .about-page .inputfield-2 {
-    margin-left: -164px;
+    margin-left: -10.25rem;
     display: flex;
 }
 
 .about-page .inputfield-para {
-    margin-left: 25px;
+    margin-left: 1.5625rem;
 }
-.about-page .sec-6{
-    margin: 50px;
+
+.about-page .sec-6 {
+    margin: 50px 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 50px;
 }
-.about-page .sec-6-heading{
-    padding-top: 18px;
+
+.about-page .sec-6-heading {
+    padding-bottom: 10px;
 }
-.about-page .sec-6-input{
-    padding:14px 28px;
+
+.about-page .sec-6-input {
+    padding: 14px 28px;
     margin: 6px;
     width: 100%;
     border-radius: 18px;
     border: 1px solid rgb(114, 110, 110);
 }
-.about-page .sec-6-btn{
-    padding:14px 28px;
+
+.about-page .sec-6-btn {
+    padding: 14px 28px;
     width: 100%;
     margin: 6px;
     border-radius: 18px;
     border: none;
     background-color: black;
     color: white;
+}
+
+
+/* Media Querry */
+
+@media (max-width: 768px) {
+    .about-page .sec-4-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .sec-4-container .card {
+        flex-basis: 50%;
+    }
+
+    .sec-3-main .my-container {
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .about-page .main-heading {
+        font-size: 40px;
+    }
+
+    .about-page .main-para {
+        font-size: 20px;
+    }
+
+    .about-page .section-2-heading {
+        font-size: 40px;
+        margin-top: 80px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .sec-4-container .card {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .about-page .main-heading {
+        font-size: 35px;
+    }
+
+    .about-page .main-para {
+        font-size: 18px;
+    }
+
+    .about-page .section-2-heading {
+        font-size: 35px;
+    }
 }
