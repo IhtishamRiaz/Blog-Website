@@ -3,22 +3,35 @@ import React, { useState } from 'react';
 
 const Comments = () => {
 
+    const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+    ];
+
+    let date = new Date();
+    let day = date.getDate();
+    let year = date.getFullYear();
+    let month = date.getMonth();
+
+    let monthName = monthList[month];
+    let formatedTime = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    let properDate = monthName + " " + day + ", " + year + " at " + formatedTime;
+
     const [commentInput, setCommentInput] = useState({
         id: '',
         name: '',
         email: '',
         commentText: '',
+        commentTime: '',
     });
     const [commentsArray, setCommentsArray] = useState([]);
 
     const handleChange = (e) => {
-        let idSet = 1;
+        let idSet = Math.floor(Math.random() * 1000000)
         setCommentInput((prevState) => ({
             ...prevState,
             ['id']: idSet,
+            ['commentTime']: properDate,
             [e.target.name]: e.target.value
         }));
-        idSet++;
     }
 
     const handleCommentSubmit = (e) => {
@@ -28,6 +41,7 @@ const Comments = () => {
             name: '',
             email: '',
             commentText: '',
+            commentTime: '',
         });
         if (commentInput.name && commentInput.email && commentInput.commentText) {
 
@@ -37,25 +51,6 @@ const Comments = () => {
         }
     }
     console.log(commentsArray);
-
-    const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-    ];
-
-    let date = new Date();
-    let day = date.getDate();
-    let minute = date.getMinutes();
-    let hour = date.getHours();
-    let year = date.getFullYear();
-    let month = date.getMonth();
-
-    let timeSuffix = ' AM';
-    if (hour > 12) {
-        hour = hour - 12;
-        timeSuffix = ' PM';
-    }
-
-    let monthName = monthList[month];
-    let properDate = monthName + " " + day + ", " + year + " at " + hour + ':' + minute + timeSuffix;
 
     return (
         <>
@@ -111,12 +106,12 @@ const Comments = () => {
                 <div className="comments-container">
                     {
                         commentsArray.map((elem) => {
-                            const { name, commentText } = elem;
+                            const { name, commentText, id, commentTime } = elem;
                             return (
-                                <div className="comment-row">
+                                <div className="comment-row" key={id}>
                                     <div className="comment-header">
                                         <h3>{name}</h3>
-                                        <p>{properDate}</p>
+                                        <p>{commentTime}</p>
                                     </div>
                                     <div className="comment-content">
                                         <p>{commentText}</p>

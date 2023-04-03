@@ -158,6 +158,9 @@ nav .menu-btn {
   margin-bottom: 0.625rem;
   color: #1976D2;
 }
+.comments-container .comment-header p {
+  margin: 0;
+}
 
 .contact-header {
   height: 31.25rem;
@@ -237,6 +240,7 @@ footer a {
   align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 1.25rem;
 }
 .footer-container ul {
   list-style: none;
@@ -373,5 +377,10 @@ footer a {
   }
   .contact-links .contact-link-box {
     flex-basis: 47%;
+  }
+}
+@media (max-width: 400px) {
+  .footer-col {
+    flex-basis: 100%;
   }
 }/*# sourceMappingURL=ihtisham.css.map */
