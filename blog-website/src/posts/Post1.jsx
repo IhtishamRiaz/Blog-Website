@@ -17,7 +17,8 @@ const Post1 = () => {
         }
         window.scrollTo(0, 0);
     }, [])
-    console.log(currentBlog);
+
+
 
     return (
         <div className='post-page page'>

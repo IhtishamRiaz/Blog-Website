@@ -24,7 +24,7 @@ const Blogs = () => {
     const handleTabChange = (event, val) => {
         setTabValue(val);
     }
-    const categoryList = ['all', 'travel', 'cricket', 'development',]
+    const categoryList = ['all', 'travel', 'cricket', 'development']
     let categoryName = categoryList[tabValue];
 
     useEffect(() => {
