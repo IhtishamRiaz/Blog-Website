@@ -95,6 +95,13 @@ nav .menu-btn {
   padding-top: 5rem;
 }
 
+.blog-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+}
+
 .blogs-container {
   display: flex;
   justify-content: space-between;
@@ -215,7 +222,7 @@ nav .menu-btn {
 .contact-links .contact-link-box {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
   text-align: center;
 }

@@ -1,26 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Comments from '../components/Comments'
+import { blogs } from '../context/BlogsProvider';
+import { useParams } from 'react-router-dom';
 
 const Post1 = () => {
 
+    const { blogsList } = useContext(blogs);
+    let { postid } = useParams();
+    const [currentBlog, setCurrentBlog] = useState();
+
     useEffect(() => {
+        let tempBlog = blogsList.find(item => item.id === parseInt(postid));
+
+        if (tempBlog) {
+            setCurrentBlog(tempBlog);
+        }
         window.scrollTo(0, 0);
     }, [])
-
+    console.log(currentBlog);
 
     return (
         <div className='post-page page'>
             <div className="my-container">
 
                 <div className="title-text">
-                    <h1>AI in Agriculture: Improving  Efficiency <br />and Sustainability</h1>
+                    <h1>{currentBlog?.title}</h1>
                 </div>
+
                 <div className='post-img'>
                     <img src="https://picsum.photos/800/550?random=1" alt="" />
                 </div>
 
                 <div className="post-content">
-                    <h2>
+                    <p>
+                        {currentBlog?.description}
+                    </p>
+
+                    {/* <h2>
                         Introduction
                     </h2>
                     <p>
@@ -75,7 +91,7 @@ const Post1 = () => {
                     </h2>
                     <p>
                         By increasing crop yields, decreasing waste, and fostering sustainable practices, AI has the potential to revolutionize agriculture. Therefore, it's critical to address the possible dangers and issues related to the application of AI in agriculture. We can make sure that artificial intelligence is used to advance a more just and sustainable food system by adopting a deliberate and cooperative strategy.
-                    </p>
+                    </p> */}
                 </div>
             </div>
             <Comments />
