@@ -10,7 +10,6 @@ import Error from './pages/Error'
 import Policy from './pages/Policy'
 import Contact from './pages/Contact'
 import Post1 from './posts/Post1'
-
 const App = () => {
   return (
     <>
@@ -27,6 +26,7 @@ const App = () => {
       </Routes>
 
       <Footer />
+    
     </>
   )
 }
