@@ -29,7 +29,7 @@ const Post1 = () => {
                 </div>
 
                 <div className='post-img'>
-                    <img src="https://picsum.photos/800/550?random=1" alt="" />
+                    <img src={`/images/${currentBlog?.image}`} alt="" />
                 </div>
 
                 <div className="post-content">

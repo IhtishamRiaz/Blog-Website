@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import { blogs } from '../context/BlogsProvider';
-import { Tab, Tabs } from '@mui/material';
+import { Tab, Tabs, TextField } from '@mui/material';
 
 
 const Blogs = () => {
@@ -12,6 +12,7 @@ const Blogs = () => {
     const [postsPerPage, setPostsPerPage] = useState(9);
     const [tabValue, setTabValue] = useState(0);
     const [currentBlogList, setCurrentBlogList] = useState(blogsList);
+    const [querry, setQuerry] = useState('')
 
     let indexOfLastPost = postsPerPage * currentPage;
     let indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -38,30 +39,47 @@ const Blogs = () => {
         }
     }, [categoryName])
 
+    const searchedList = currentBlogList?.filter(item => {
+        return item.title.toLowerCase().includes(querry.toLowerCase())
+    })
+
     return (
         <>
-            <div className="blog-tabs">
-                <Tabs
-                    value={tabValue}
-                    onChange={handleTabChange}
-                    variant="scrollable"
-                    scrollButtons="auto"
-                >
-                    <Tab label='All' style={{ fontWeight: '800' }}></Tab>
-                    <Tab label='Travel' style={{ fontWeight: '800' }}></Tab>
-                    <Tab label='Cricket' style={{ fontWeight: '800' }}></Tab>
-                    <Tab label='Development' style={{ fontWeight: '800' }}></Tab>
-                </Tabs>
+            <div className="blog-controls">
+                <div className="blog-tabs">
+                    <Tabs
+                        value={tabValue}
+                        onChange={handleTabChange}
+                        variant="scrollable"
+                        scrollButtons="auto"
+                    >
+                        <Tab label='All' style={{ fontWeight: '800' }}></Tab>
+                        <Tab label='Travel' style={{ fontWeight: '800' }}></Tab>
+                        <Tab label='Cricket' style={{ fontWeight: '800' }}></Tab>
+                        <Tab label='Development' style={{ fontWeight: '800' }}></Tab>
+                        <Tab label='Artificial Intelligence' style={{ fontWeight: '800' }}></Tab>
+                    </Tabs>
+                </div>
+
+                <div className="blog-search">
+                    <TextField
+                        type='search'
+                        value={querry}
+                        onChange={(e) => setQuerry(e.target.value)}
+                        label="Search Blogs"
+                        variant="outlined" />
+                </div>
             </div>
             <div className="blogs-container">
                 {
-                    currentBlogList?.slice(indexOfFirstPost, indexOfLastPost)?.map((item) => {
-                        const { id, title } = item;
+                    searchedList?.slice(indexOfFirstPost, indexOfLastPost)?.map((item) => {
+                        const { id, title, image } = item;
                         counter++;
                         return (
                             <Link className="blog-box route-link" key={id} to={`post/${id}`}>
                                 <div className="blog-pic" >
-                                    <img src={`https://picsum.photos/800/550?random=${counter}`} alt="" />
+                                    <img src={`/images/${image}`} alt="" />
+                                    {/* <img src={`https://picsum.photos/800/550?random=${counter}`} alt="" /> */}
                                 </div>
                                 <h3>{title}</h3>
                                 <p>Read More Here</p>

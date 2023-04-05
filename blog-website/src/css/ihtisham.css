@@ -95,7 +95,13 @@ nav .menu-btn {
   padding-top: 5rem;
 }
 
-.blog-tabs {
+.blog-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.blog-controls .blog-tabs {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,13 +133,11 @@ nav .menu-btn {
 .blogs-container .blog-box:hover {
   transform: scale(1.05);
 }
-.blogs-container .blog-pic {
-  min-height: 15.4375rem;
-}
 .blogs-container .blog-pic img {
   width: 100%;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  aspect-ratio: 16/9;
 }
 
 .pagination-btns {

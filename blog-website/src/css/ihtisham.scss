@@ -120,11 +120,18 @@ nav {
     padding-top: 5rem;
 }
 
-.blog-tabs {
+.blog-controls {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 30px 0;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .blog-tabs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 30px 0;
+    }
 }
 
 .blogs-container {
@@ -156,12 +163,13 @@ nav {
     }
 
     .blog-pic {
-        min-height: 15.4375rem;
+        // min-height: 15.4375rem;
 
         img {
             width: 100%;
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
+            aspect-ratio: 16/9;
         }
     }
 }
