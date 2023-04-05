@@ -10,6 +10,7 @@ import Policy from './pages/Policy'
 import Contact from './pages/Contact'
 import Post1 from './posts/Post1'
 import BlogsProvider from './context/BlogsProvider'
+import AddPost from './pages/AddPost'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route exact path='/contact' element={<Contact />} />
           <Route exact path='/register' element={<Signup />} />
           <Route exact path='/post/:postid' element={<Post1 />} />
+          <Route exact path='/addPost' element={<AddPost />} />
           <Route path='/*' element={<Error />} />
         </Routes>
 

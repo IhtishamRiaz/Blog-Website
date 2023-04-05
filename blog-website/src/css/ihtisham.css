@@ -111,9 +111,11 @@ nav .menu-btn {
 .blogs-container {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: 3.5rem;
   margin: 3.125rem 0;
+  min-height: 450px;
 }
 .blogs-container .blog-box {
   flex-basis: 30%;
@@ -300,6 +302,28 @@ footer a {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.add-post-page {
+  margin-top: 50px;
+}
+
+.img-upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 50px 0;
+}
+
+.input-fields-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 @media (max-width: 1250px) {

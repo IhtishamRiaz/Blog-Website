@@ -29,7 +29,7 @@ const Post1 = () => {
                 </div>
 
                 <div className='post-img'>
-                    <img src={`/images/${currentBlog?.image}`} alt="" />
+                    <img src={`${currentBlog?.image}`} alt="" />
                 </div>
 
                 <div className="post-content">

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import { blogs } from '../context/BlogsProvider';
 import { Tab, Tabs, TextField } from '@mui/material';
+import AlternatePic from '../images/NoPostAvailable.png'
 
 
 const Blogs = () => {
@@ -12,12 +13,11 @@ const Blogs = () => {
     const [postsPerPage, setPostsPerPage] = useState(9);
     const [tabValue, setTabValue] = useState(0);
     const [currentBlogList, setCurrentBlogList] = useState(blogsList);
-    const [querry, setQuerry] = useState('')
+    const [querry, setQuerry] = useState('');
+    const [isEmpty, setIsEmpty] = useState(false);
 
     let indexOfLastPost = postsPerPage * currentPage;
     let indexOfFirstPost = indexOfLastPost - postsPerPage;
-    let totalPages = blogsList?.length;
-    let counter = 0;
 
     const handlePaginationClick = (event, page) => {
         setCurrentPage(page);
@@ -42,6 +42,20 @@ const Blogs = () => {
     const searchedList = currentBlogList?.filter(item => {
         return item.title.toLowerCase().includes(querry.toLowerCase())
     })
+
+    let totalPages = searchedList?.length;
+    console.log(searchedList);
+
+    useEffect(() => {
+        if (searchedList.length === 0) {
+            setIsEmpty(true);
+        }
+        else {
+            setIsEmpty(false);
+        }
+    }, [searchedList])
+
+
 
     return (
         <>
@@ -78,7 +92,7 @@ const Blogs = () => {
                         return (
                             <Link className="blog-box route-link" key={id} to={`post/${id}`}>
                                 <div className="blog-pic" >
-                                    <img src={`/images/${image}`} alt="" />
+                                    <img src={`${image}`} alt="" />
                                 </div>
                                 <h3>{title}</h3>
                                 <p>Read More Here</p>
@@ -86,24 +100,14 @@ const Blogs = () => {
                         )
                     })
                 }
-            </div >
-            {/* <div className="blogs-container">
                 {
-                    posts?.slice(indexOfFirstPost, indexOfLastPost)?.map((item) => {
-                        const { id, title } = item;
-                        counter++;
-                        return (
-                            <Link className="blog-box route-link" key={id} to={`post/${counter}`}>
-                                <div className="blog-pic" >
-                                    <img src={`https://picsum.photos/800/550?random=${counter}`} alt="" />
-                                </div>
-                                <h3>{title.slice(0, 20) + '...'}</h3>
-                                <p>Read More Here...</p>
-                            </Link>
-                        )
-                    })
+                    isEmpty &&
+                    <div className="alternative-pic">
+                        <img src={AlternatePic} alt="" />
+                    </div>
                 }
-            </div > */}
+            </div >
+
             <Pagination
                 count={Math.ceil(totalPages / postsPerPage)}
                 variant="outlined"
