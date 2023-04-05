@@ -110,9 +110,9 @@ nav .menu-btn {
 
 .blogs-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 2.5rem;
+  gap: 3.5rem;
   margin: 3.125rem 0;
 }
 .blogs-container .blog-box {

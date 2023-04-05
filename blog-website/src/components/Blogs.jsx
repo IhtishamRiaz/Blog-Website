@@ -25,7 +25,7 @@ const Blogs = () => {
     const handleTabChange = (event, val) => {
         setTabValue(val);
     }
-    const categoryList = ['all', 'travel', 'cricket', 'development']
+    const categoryList = ['all', 'travel', 'cricket', 'development', 'artificial intelligence'];
     let categoryName = categoryList[tabValue];
 
     useEffect(() => {
@@ -57,7 +57,7 @@ const Blogs = () => {
                         <Tab label='Travel' style={{ fontWeight: '800' }}></Tab>
                         <Tab label='Cricket' style={{ fontWeight: '800' }}></Tab>
                         <Tab label='Development' style={{ fontWeight: '800' }}></Tab>
-                        <Tab label='Artificial Intelligence' style={{ fontWeight: '800' }}></Tab>
+                        <Tab label='artificial intelligence' style={{ fontWeight: '800' }}></Tab>
                     </Tabs>
                 </div>
 
@@ -67,19 +67,18 @@ const Blogs = () => {
                         value={querry}
                         onChange={(e) => setQuerry(e.target.value)}
                         label="Search Blogs"
-                        variant="outlined" />
+                        variant="outlined"
+                    />
                 </div>
             </div>
             <div className="blogs-container">
                 {
                     searchedList?.slice(indexOfFirstPost, indexOfLastPost)?.map((item) => {
                         const { id, title, image } = item;
-                        counter++;
                         return (
                             <Link className="blog-box route-link" key={id} to={`post/${id}`}>
                                 <div className="blog-pic" >
                                     <img src={`/images/${image}`} alt="" />
-                                    {/* <img src={`https://picsum.photos/800/550?random=${counter}`} alt="" /> */}
                                 </div>
                                 <h3>{title}</h3>
                                 <p>Read More Here</p>

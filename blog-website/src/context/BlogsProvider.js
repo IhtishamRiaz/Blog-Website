@@ -46,6 +46,13 @@ const BlogsProvider = ({ children }) => {
             category: 'cricket',
             image: 'ViratVSBaber.jpg',
             description: 'AI can be used to improve irrigation plans, utilize less water, and cut costs associated with water consumption. Artificial intelligence (AI) is used in smart irrigation systems to monitor soil moisture, weather, and plant requirements before adjusting the water supply. This enables farmers to boost agricultural yields, conserve water and other resources, and lower their risk of overwatering or under watering causing crop damage.By analyzing data and making recommendations in real-time, AI can assist farmers in bettering crop management. For instance, farmers may identify and treat crop diseases, pests, and nutritional deficiencies using AI-powered technologies. This enables more precise and focused treatment, which can minimize costs by lowering the demand for pesticides and fertilizers.'
+        },
+        {
+            id: 7,
+            title: 'AI in Agriculture',
+            category: 'artificial intelligence',
+            image: 'AIinAgriculture.jpg',
+            description: 'AI can be used to improve irrigation plans, utilize less water, and cut costs associated with water consumption. Artificial intelligence (AI) is used in smart irrigation systems to monitor soil moisture, weather, and plant requirements before adjusting the water supply. This enables farmers to boost agricultural yields, conserve water and other resources, and lower their risk of overwatering or under watering causing crop damage.By analyzing data and making recommendations in real-time, AI can assist farmers in bettering crop management. For instance, farmers may identify and treat crop diseases, pests, and nutritional deficiencies using AI-powered technologies. This enables more precise and focused treatment, which can minimize costs by lowering the demand for pesticides and fertilizers.'
         }
     ]);
 
