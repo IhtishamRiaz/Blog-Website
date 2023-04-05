@@ -22,8 +22,8 @@ const Home = () => {
                 <div className="my-container">
                     <div className="title-text">
                         <h1>Read Our Blogs Here</h1>
-                        <Blogs />
                     </div>
+                    <Blogs />
                 </div>
             </section>
         </>

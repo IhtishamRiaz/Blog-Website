@@ -95,12 +95,27 @@ nav .menu-btn {
   padding-top: 5rem;
 }
 
-.blogs-container {
+.blog-controls {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 2.5rem;
+}
+.blog-controls .blog-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.blogs-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 3.5rem;
   margin: 3.125rem 0;
+  min-height: 450px;
 }
 .blogs-container .blog-box {
   flex-basis: 30%;
@@ -120,13 +135,11 @@ nav .menu-btn {
 .blogs-container .blog-box:hover {
   transform: scale(1.05);
 }
-.blogs-container .blog-pic {
-  min-height: 15.4375rem;
-}
 .blogs-container .blog-pic img {
   width: 100%;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  aspect-ratio: 16/9;
 }
 
 .pagination-btns {
@@ -215,7 +228,7 @@ nav .menu-btn {
 .contact-links .contact-link-box {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
   text-align: center;
 }
@@ -282,6 +295,35 @@ footer a {
 }
 .post-page .post-img img {
   max-width: 100%;
+}
+
+.error-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.add-post-page {
+  margin-top: 50px;
+}
+
+.img-upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 50px 0;
+}
+
+.input-fields-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 @media (max-width: 1250px) {

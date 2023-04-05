@@ -50,7 +50,7 @@ const Comments = () => {
             ])
         }
     }
-    console.log(commentsArray);
+    // console.log(commentsArray);
 
     return (
         <>
