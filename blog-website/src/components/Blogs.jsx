@@ -71,7 +71,7 @@ const Blogs = () => {
                         <Tab label='Travel' style={{ fontWeight: '800' }}></Tab>
                         <Tab label='Cricket' style={{ fontWeight: '800' }}></Tab>
                         <Tab label='Development' style={{ fontWeight: '800' }}></Tab>
-                        <Tab label='artificial intelligence' style={{ fontWeight: '800' }}></Tab>
+                        <Tab label='Artificial Intelligence' style={{ fontWeight: '800' }}></Tab>
                     </Tabs>
                 </div>
 
