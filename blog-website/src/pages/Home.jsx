@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box } from '@mui/material';
 import Blogs from '../components/Blogs';
 
 const Home = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <>
             <Box className='home-page'>
@@ -10,7 +15,6 @@ const Home = () => {
                     <div className="my-container">
                         <h1>Hello, Welcome to <span>Discovry Blogs</span></h1>
                     </div>
-
                 </div>
             </Box>
             <section className='blogs-section'>

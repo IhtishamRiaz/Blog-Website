@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Box } from '@mui/system'
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -15,6 +15,11 @@ import card5 from '../images/card-5.jpg'
 
 
 const About = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <>
             <Box className='about-page page'>
@@ -156,9 +161,9 @@ const About = () => {
                                 specific to our campuses across San Diego County.</p>
                         </div>
                         <div>
-                        <input className='sec-6-input' type="text" placeholder='Name'/> <br />
-                        <input className='sec-6-input' type="text" placeholder='Email-Address'/> <br />
-                        <button className='sec-6-btn' type='submit'>Subscribe Now</button>
+                            <input className='sec-6-input' type="text" placeholder='Name' /> <br />
+                            <input className='sec-6-input' type="text" placeholder='Email-Address' /> <br />
+                            <button className='sec-6-btn' type='submit'>Subscribe Now</button>
                         </div>
                     </div>
                 </div>

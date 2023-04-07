@@ -45,13 +45,13 @@ const Blogs = () => {
                         const { id, title } = item;
                         counter++;
                         return (
-                            < div className="blog-box" key={id}>
+                            <Link className="blog-box route-link" key={id} to={`post/${counter}`}>
                                 <div className="blog-pic" >
                                     <img src={`https://picsum.photos/800/550?random=${counter}`} alt="" />
                                 </div>
-                                <h3>{title.slice(0, 20)}</h3>
-                                <Link>Read More Here...</Link>
-                            </div>
+                                <h3>{title.slice(0, 20) + '...'}</h3>
+                                <p>Read More Here...</p>
+                            </Link>
                         )
                     })
                 }

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Alkatra:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -110,6 +111,9 @@ nav .nav-logo {
   transition: all 300ms;
   padding-bottom: 15px;
 }
+.blogs-container .blog-box p {
+  color: #1976D2;
+}
 .blogs-container .blog-box:hover {
   transform: scale(1.05);
 }
@@ -131,7 +135,7 @@ footer {
 }
 
 .comments-form {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 .comments-form form {
   margin-top: 30px;
@@ -153,4 +157,118 @@ footer {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
+  color: #1976D2;
+}
+
+.contact-header {
+  height: 500px;
+  background: linear-gradient(rgba(25, 118, 210, 0.6), rgba(25, 118, 210, 0.6)), url(../images/Contact-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+.contact-header h1 {
+  font-size: 54px;
+  margin-bottom: 25px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+}
+.contact-header p {
+  font-size: 18px;
+}
+
+.contact-container {
+  display: flex;
+  margin: 50px auto;
+}
+.contact-container .contact-form {
+  flex-basis: 50%;
+  padding-right: 30px;
+}
+.contact-container .contact-form h1 {
+  color: #1976D2;
+  margin-bottom: 20px;
+}
+.contact-container .contact-form .form-fields {
+  margin-bottom: 20px;
+}
+.contact-container .contact-map {
+  flex-basis: 50%;
+}
+
+.contact-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.contact-links .contact-link-box {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  text-align: center;
+}
+.contact-links .contact-link-box strong {
+  display: block;
+}
+
+footer {
+  background: -webkit-linear-gradient(0deg, #1976D2, #f18e95);
+  color: white;
+  margin-top: 50px;
+  padding: 40px 0;
+  text-align: left;
+}
+footer a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.footer-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.footer-container ul {
+  list-style: none;
+}
+.footer-container ul li {
+  cursor: pointer;
+  transition: all 300ms;
+  margin-bottom: 7px;
+  font-size: 16px;
+  font-weight: 300;
+}
+.footer-container ul li:hover {
+  color: #0051ff;
+}
+.footer-container h1 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.post-page {
+  margin-top: 50px;
+}
+.post-page .title-text h1 {
+  font-size: 32px;
+}
+.post-page h2 {
+  font-size: 20px;
+  margin-top: 20px;
+}
+.post-page p {
+  margin-bottom: 12px;
+  line-height: 28px;
+}
+.post-page .post-img {
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=ihtisham.css.map */
