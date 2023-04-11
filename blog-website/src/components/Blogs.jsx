@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import { blogs } from '../context/BlogsProvider';
 import { Tab, Tabs, TextField } from '@mui/material';
-import AlternatePic from '../images/NoPostAvailable.png'
+import AlternatePic from '../images/NoPostAvailable.gif'
 
 
 const Blogs = () => {

@@ -47,6 +47,8 @@ const AddPost = () => {
     });
     let uniqueCategories = [...new Set(allCategories)];
 
+    // console.log(postDescription.current.getContent());
+
     return (
         <>
             <div className='add-post-page page'>

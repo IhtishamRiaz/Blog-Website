@@ -24,7 +24,20 @@ const BlogsProvider = ({ children }) => {
             title: 'What is React Router',
             category: 'development',
             image: '/images/reactRouter.png',
-            description: 'AI can be used to improve irrigation plans, utilize less water, and cut costs associated with water consumption. Artificial intelligence (AI) is used in smart irrigation systems to monitor soil moisture, weather, and plant requirements before adjusting the water supply. This enables farmers to boost agricultural yields, conserve water and other resources, and lower their risk of overwatering or under watering causing crop damage.By analyzing data and making recommendations in real-time, AI can assist farmers in bettering crop management. For instance, farmers may identify and treat crop diseases, pests, and nutritional deficiencies using AI-powered technologies. This enables more precise and focused treatment, which can minimize costs by lowering the demand for pesticides and fertilizers.'
+            description: `<p>React Router is a popular library that simplifies the process of client-side routing in React-based applications. It provides a set of components and utilities that make it easy to handle navigation between different views or pages within a web application, without the need to reload the entire page.</p>
+            <h2>How it Works</h2>
+            <p>React Router uses a declarative, component-based syntax to define the routing for a web application. The main components used in React Router are BrowserRouter, Switch, Route, and Link.</p>
+            <p>BrowserRouter: This component provides a router that uses HTML5 history API to keep the URL in sync with the application's UI.</p>
+            <p>Switch: This component is used to render the first child Route or Redirect that matches the current URL. This is useful for handling 404 errors and other types of unexpected routes.</p>
+            <p>Route: This component is used to define a mapping between a URL and a React component. It can also pass parameters to the component through the URL.</p>
+            <p>Link: This component is used to create links between different routes in the application.</p>
+            <h2>Advanced Routing Scenarios</h2>
+            <p>React Router provides several other components and utilities for handling advanced routing scenarios, such as nested routes, protected routes, and lazy loading.</p>
+            <p>Nested Routes: React Router allows developers to define routes within routes, which is useful for creating complex web applications with multiple layers of navigation.</p>
+            <p>Protected Routes: React Router provides components for handling authentication and authorization, such as Redirect and PrivateRoute.</p>
+            <p>Lazy Loading: React Router also allows developers to load components lazily, which improves the performance of the web application by reducing the initial load time.</p>
+            <h2>Conclusion</h2>
+            <p>React Router is a powerful and flexible library for client-side routing in React-based applications. It simplifies the process of setting up routing and allows developers to create SPAs that are easy to use and navigate. With its comprehensive set of components and utilities, React Router is a must-have tool for any developer building modern web applications.</p>`
         },
         {
             id: 4,
@@ -77,9 +90,22 @@ const BlogsProvider = ({ children }) => {
         },
     ]);
 
+    const [usersData, setUsersData] = useState([
+        { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35, gender: 'Male', mobile: '03546987465' },
+        { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42, gender: 'Female', mobile: '03546987465' },
+        { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45, gender: 'Male', mobile: '03546987465' },
+        { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16, gender: 'Male', mobile: '03546987465' },
+        { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: 45, gender: 'Female', mobile: '03546987465' },
+        { id: 6, lastName: 'Melisandre', firstName: 'John', age: 150, gender: 'Female', mobile: '03546987465' },
+        { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44, gender: 'Male', mobile: '03546987465' },
+        { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36, gender: 'Female', mobile: '03546987465' },
+        { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65, gender: 'Female', mobile: '03546987465' },
+        { id: 10, lastName: 'Roxie', firstName: 'Harvey', age: 65, gender: 'Female', mobile: '03546987465' },
+    ])
+
 
     return (
-        <blogs.Provider value={{ blogsList, setBlogsList }}>
+        <blogs.Provider value={{ blogsList, setBlogsList, usersData }}>
             {children}
         </blogs.Provider>
     );

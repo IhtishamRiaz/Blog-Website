@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Reg from '@mui/icons-material/HowToReg';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import Logo from '../images/logo.png'
 
 const Navbar = () => {
     const [isLogin, setIsLogin] = useState(false);
@@ -16,7 +17,9 @@ const Navbar = () => {
             <nav>
                 <div className="my-container">
                     <div>
-                        <Link to='/' className="nav-logo">Discovery Blogs</Link>
+                        <Link to='/' className="nav-logo">
+                            <img src={Logo} alt="" />
+                        </Link>
                     </div>
                     <div className={isMenuOpen ? 'nav-container-mobile' : 'nav-links-container'}>
                         <ul>
