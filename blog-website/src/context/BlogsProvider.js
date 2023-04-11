@@ -91,21 +91,22 @@ const BlogsProvider = ({ children }) => {
     ]);
 
     const [usersData, setUsersData] = useState([
-        { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35, gender: 'Male', mobile: '03546987465' },
-        { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42, gender: 'Female', mobile: '03546987465' },
-        { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45, gender: 'Male', mobile: '03546987465' },
-        { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16, gender: 'Male', mobile: '03546987465' },
-        { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: 45, gender: 'Female', mobile: '03546987465' },
-        { id: 6, lastName: 'Melisandre', firstName: 'John', age: 150, gender: 'Female', mobile: '03546987465' },
-        { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44, gender: 'Male', mobile: '03546987465' },
-        { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36, gender: 'Female', mobile: '03546987465' },
-        { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65, gender: 'Female', mobile: '03546987465' },
-        { id: 10, lastName: 'Roxie', firstName: 'Harvey', age: 65, gender: 'Female', mobile: '03546987465' },
+        { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35, gender: 'Male', mobile: '03546987465', email: 'sample@gmailcom' },
+        { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom' },
+        { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45, gender: 'Male', mobile: '03546987465', email: 'sample@gmailcom' },
+        { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16, gender: 'Male', mobile: '03546987465', email: 'sample@gmailcom' },
+        { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: 45, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom' },
+        { id: 6, lastName: 'Melisandre', firstName: 'John', age: 150, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom' },
+        { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44, gender: 'Male', mobile: '03546987465', email: 'sample@gmailcom' },
+        { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom' },
+        { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom' },
+        { id: 10, lastName: 'Roxie', firstName: 'Harvey', age: 65, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom' },
+        { id: 11, lastName: 'Roxie', firstName: 'Harvey', age: 65, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom' },
     ])
 
 
     return (
-        <blogs.Provider value={{ blogsList, setBlogsList, usersData }}>
+        <blogs.Provider value={{ blogsList, setBlogsList, usersData, setUsersData }}>
             {children}
         </blogs.Provider>
     );

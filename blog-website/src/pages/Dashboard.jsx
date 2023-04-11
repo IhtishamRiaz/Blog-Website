@@ -12,6 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import LineChart from '../components/LineChart';
 import UsersTable from '../components/UsersTable';
+import { Link } from 'react-router-dom';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Logout'];
@@ -38,22 +39,23 @@ function Dashboard() {
             <AppBar position="static">
                 <Container className='my-container'>
                     <Toolbar disableGutters>
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href="/"
-                            sx={{
-                                mr: 4,
-                                display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 600,
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            Dashboard
-                        </Typography>
+                        <Link to={'/'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <Typography
+                                variant="h5"
+                                noWrap
+                                component="a"
+                                sx={{
+                                    mr: 4,
+                                    display: { xs: 'none', md: 'flex' },
+                                    fontFamily: 'monospace',
+                                    fontWeight: 600,
+                                    color: 'inherit',
+                                    textDecoration: 'none',
+                                }}
+                            >
+                                Dashboard
+                            </Typography>
+                        </Link>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             {pages.map((page) => (
