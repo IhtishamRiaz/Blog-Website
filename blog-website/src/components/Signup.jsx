@@ -87,7 +87,7 @@ const Signup = () => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <Paper style={mainBox} elevation="8">
+                <Paper style={mainBox} elevation="8" className='signup-box'>
                     <Box>
                         <Typography variant='h3' textAlign="center" color={"primary"}>
                             {isSignUp ? 'Sign Up' : 'Login'}

@@ -13,7 +13,7 @@ const Home = () => {
             <Box className='home-page'>
                 <div className="header">
                     <div className="my-container">
-                        <h1>Hello, Welcome to <span>Discovry Blogs</span></h1>
+                        <h1>Hello, Welcome to<br />Discovry Blogs</h1>
                     </div>
                 </div>
             </Box>
@@ -21,8 +21,8 @@ const Home = () => {
                 <div className="my-container">
                     <div className="title-text">
                         <h1>Read Our Blogs Here</h1>
-                        <Blogs />
                     </div>
+                    <Blogs />
                 </div>
             </section>
         </>
