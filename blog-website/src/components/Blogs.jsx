@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import { blogs } from '../context/BlogsProvider';
 import { Tab, Tabs, TextField } from '@mui/material';
-import AlternatePic from '../images/NoPostAvailable.png'
+import AlternatePic from '../images/NoPostAvailable.gif'
 
 
 const Blogs = () => {
@@ -71,7 +71,7 @@ const Blogs = () => {
                         <Tab label='Travel' style={{ fontWeight: '800' }}></Tab>
                         <Tab label='Cricket' style={{ fontWeight: '800' }}></Tab>
                         <Tab label='Development' style={{ fontWeight: '800' }}></Tab>
-                        <Tab label='artificial intelligence' style={{ fontWeight: '800' }}></Tab>
+                        <Tab label='Artificial Intelligence' style={{ fontWeight: '800' }}></Tab>
                     </Tabs>
                 </div>
 

@@ -33,9 +33,10 @@ const Post1 = () => {
                 </div>
 
                 <div className="post-content">
-                    <p>
+                    <div dangerouslySetInnerHTML={{ __html: currentBlog?.description }} />
+                    {/* <p>
                         {currentBlog?.description}
-                    </p>
+                    </p> */}
 
                 </div>
             </div>
