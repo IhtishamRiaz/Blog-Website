@@ -33,6 +33,14 @@ const radioStyle = {
 
 const Signup = () => {
 
+    const date = new Date();
+    const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+    ];
+    let day = date.getDate();
+    let month = date.getMonth();
+    let monthName = monthList[month];
+    let formattedDate = `${day} ${monthName}`
+
     const { setUsersData, usersData } = useContext(blogs);
     const [isSignUp, setIsSignUp] = useState(true);
     const [inputs, setInputs] = useState({
@@ -43,7 +51,8 @@ const Signup = () => {
         mobile: '',
         age: '',
         gender: '',
-        password: ''
+        password: '',
+        regDate: '',
     });
 
     const idToUse = usersData[usersData.length - 1].id + 1;
@@ -52,6 +61,7 @@ const Signup = () => {
         setInputs((prevState) => ({
             ...prevState,
             id: idToUse,
+            regDate: formattedDate,
             [e.target.name]: e.target.value,
         }));
     }
@@ -65,33 +75,39 @@ const Signup = () => {
             mobile: '',
             age: '',
             gender: '',
-            password: ''
+            password: '',
+            regDate: '',
         })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        setUsersData((prevState) => ([
-            ...prevState, inputs
-        ]))
+        if (inputs.firstName && inputs.lastName && inputs.email && inputs.mobile && inputs.age && inputs.gender && inputs.password) {
 
-        setInputs({
-            id: '',
-            firstName: '',
-            lastName: '',
-            email: '',
-            mobile: '',
-            age: '',
-            gender: '',
-            password: ''
-        })
+            setUsersData((prevState) => ([
+                ...prevState, inputs
+            ]))
+
+            setInputs({
+                id: '',
+                firstName: '',
+                lastName: '',
+                email: '',
+                mobile: '',
+                age: '',
+                gender: '',
+                password: '',
+                regDate: '',
+            })
+        }
+
     }
 
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <Paper style={mainBox} elevation="8" className='signup-box'>
+                <Paper style={mainBox} elevation={8} className='signup-box'>
                     <Box>
                         <Typography variant='h3' textAlign="center" color={"primary"}>
                             {isSignUp ? 'Sign Up' : 'Login'}

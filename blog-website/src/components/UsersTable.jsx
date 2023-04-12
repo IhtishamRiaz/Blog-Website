@@ -10,12 +10,15 @@ const columns = [
     { field: 'age', headerName: 'Age', width: 90 },
     { field: 'gender', headerName: 'Gender', width: 150 },
     { field: 'mobile', headerName: 'Mobile', width: 150 },
-    { field: 'email', headerName: 'Email', width: 170 },
+    { field: 'email', headerName: 'Email', width: 200 },
+    { field: 'regDate', headerName: 'Reg Date', width: 170 },
 ];
+
 
 export default function UsersTable() {
 
     const { usersData } = useContext(blogs);
+
     return (
         <div style={{ height: 600, width: '100%' }}>
             <DataGrid

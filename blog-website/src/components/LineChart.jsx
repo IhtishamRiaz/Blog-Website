@@ -1,37 +1,37 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto';
+import { blogs } from '../context/BlogsProvider';
+import { useContext } from 'react';
 
 const LineChart = () => {
 
+    const { usersData } = useContext(blogs);
 
-    const data = [
-        { date: '11 April', users: 9 },
-        { date: '12 April', users: 20 },
-        { date: '13 April', users: 55 },
-        { date: '14 April', users: 42 },
-        { date: '15 April', users: 64 },
-        { date: '16 April', users: 78 },
-        { date: '17 April', users: 64 },
-        { date: '18 April', users: 52 },
-        { date: '19 April', users: 78 },
-        { date: '20 April', users: 85 },
-        { date: '21 April', users: 100 },
-        { date: '22 April', users: 84 },
-    ];
+    const datesCount = {};
 
-    const userData = {
-        labels: data.map((item) => item.date),
+    usersData.forEach((item) => {
+        if (datesCount[item.regDate]) {
+            datesCount[item.regDate]++;
+        } else {
+            datesCount[item.regDate] = 1;
+        }
+    });
+
+    const datesArray = Object.entries(datesCount).slice(-7);
+
+    const chartData = {
+        labels: datesArray.map(item => item[0]),
         datasets: [{
             label: 'Users Gained',
-            data: data.map((item) => item.users),
+            data: datesArray.map(item => item[1]),
         }]
     }
 
     return (
         <>
             <Line
-                data={userData}
+                data={chartData}
                 options={{
                     scales: {
                         y: {

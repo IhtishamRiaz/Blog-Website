@@ -44,7 +44,6 @@ const Blogs = () => {
     })
 
     let totalPages = searchedList?.length;
-    console.log(searchedList);
 
     useEffect(() => {
         if (searchedList.length === 0) {

@@ -47,15 +47,15 @@ const AddPost = () => {
     });
     let uniqueCategories = [...new Set(allCategories)];
 
-    // console.log(postDescription.current.getContent());
-
     return (
         <>
             <div className='add-post-page page'>
-                <div className="my-container">
-                    <div className="title-text">
+                <div className="header">
+                    <div className="my-container">
                         <h1>Add New Post</h1>
                     </div>
+                </div>
+                <div className="my-container">
                     <div className="add-post-form">
                         <form onSubmit={handleSumbit}>
 
