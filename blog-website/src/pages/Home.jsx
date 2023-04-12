@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box } from '@mui/material';
 import Blogs from '../components/Blogs';
 
 const Home = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <>
             <Box className='home-page'>
                 <div className="header">
                     <div className="my-container">
-                        <h1>Hello, Welcome to <span>Discovry Blogs</span></h1>
+                        <h1>Hello, Welcome to<br /><span>Discovery Blogs</span></h1>
                     </div>
-
                 </div>
             </Box>
             <section className='blogs-section'>
                 <div className="my-container">
                     <div className="title-text">
                         <h1>Read Our Blogs Here</h1>
-                        <Blogs />
                     </div>
+                    <Blogs />
                 </div>
             </section>
         </>

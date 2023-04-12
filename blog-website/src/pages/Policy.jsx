@@ -1,8 +1,13 @@
-import React from 'react';
-import { Box } from '@mui/system';
+import React, { useEffect } from 'react'
+import { Box } from '@mui/system'
 import info from '../images/info.jpg';
 
 const Policy = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <>
             <Box className='policy-page page'>
@@ -24,16 +29,16 @@ const Policy = () => {
                             <h2>What information do we collect?</h2>
                             <p>
                                 We may collect the following types of personal information from you when
-                                you use our site:<br />
-                                Your name and email address, if you choose to sign up for our email list.<br />
-                                Your IP address and browser type, as collected by our website analytics tools.<br />
+                                you use our site:<br/>
+                                Your name and email address, if you choose to sign up for our email list.<br/>
+                                Your IP address and browser type, as collected by our website analytics tools.<br/>
                                 Any other information you choose to provide to us through our contact forms or comments sections.
                             </p>
                             <h2>How do we use your information?</h2>
                             <p>
-                                We may use the information we collect from you in the following ways:<br />
-                                To send periodic emails if you choose to sign up for our email list.<br />
-                                To personalize your experience and provide you with tailored content.<br />
+                                We may use the information we collect from you in the following ways:<br/>
+                                To send periodic emails if you choose to sign up for our email list.<br/>
+                                To personalize your experience and provide you with tailored content.<br/>
                                 To improve our website based on your feedback.
                             </p>
                         </div>

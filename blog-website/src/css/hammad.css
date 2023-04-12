@@ -1,0 +1,301 @@
+/* Bout CSS */
+.about-page .main-bg {
+    border-radius: 20px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../images/About-bg.jpg);
+    padding: 3.125rem;
+    width: 95%;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.about-page .main-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.about-page .main-heading {
+    color: black;
+    font-size: 4.375rem;
+    letter-spacing: 1px;
+    padding-top: 70px;
+}
+
+.about-page .main-para {
+    color: black;
+    font-size: 1.875rem;
+    letter-spacing: 1px;
+    padding-top: 14px;
+}
+
+.about-page .btn {
+    padding: 1rem 2.5rem;
+    color: white;
+    border-radius: 30px;
+    font-size: 16px;
+    border: none;
+    background-color: #d5ce00;
+    border: 2px solid #d5ce00;
+    transition: all 300ms;
+    cursor: pointer;
+}
+
+.about-page .btn-2 {
+    padding: 1rem 2.5rem;
+    color: white;
+    border-radius: 30px;
+    font-size: 16px;
+    border: 2px solid white;
+    background-color: transparent;
+    transition: all 300ms;
+    cursor: pointer;
+}
+
+.about-page .btn:hover {
+    background-color: black;
+    border: 2px solid black;
+}
+
+.about-page .btn-2:hover {
+    background-color: black;
+    border: 2px solid black;
+}
+
+.about-page .section-main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+}
+
+.about-page .section-2-heading {
+    font-size: 50px;
+    letter-spacing: 1px;
+    margin-top: 120px;
+}
+
+.about-page .section-2-para {
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding-top: 18px;
+}
+
+.about-page .section-2-para2 {
+    padding-top: 16px;
+}
+
+.about-page .sec-icon {
+    margin-top: 30px;
+}
+
+.about-page .sec-icon2 {
+    margin-left: 15px;
+    margin-top: 30px;
+}
+
+.about-page .sec-3-main {
+    background-color: #f8f5f5;
+    margin-top: 100px;
+    padding: 55px 0;
+}
+
+.sec-3-main .my-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-page .img {
+    height: 300px;
+    max-width: 100%;
+    border-radius: 16px;
+}
+
+.about-page .sec-3-heading {
+    font-size: 2.1875rem;
+    letter-spacing: 1px;
+}
+
+.about-page .sec-3-paragraph {
+    padding-top: 30px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 1.9em;
+}
+
+.about-page .sec-4-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 70px 0;
+}
+
+.about-page .card {
+    flex-basis: 30%;
+    border: 1px solid rgb(234, 233, 233);
+    text-align: center;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+.about-page .card:hover {
+    transform: scale(1.05);
+}
+
+.about-page .card-1 {
+    height: auto;
+    width: 100%;
+}
+
+.about-page .card-1-head {
+    margin: 8px;
+}
+
+.about-page .sec-4-container2 {
+    display: flex;
+}
+
+.about-page .Sec-5 {
+    background-color: #f8f5f5;
+}
+
+.about-page .sec-5-paragraph {
+    font-size: 14px;
+    line-height: 1.9em;
+    margin-top: 28px;
+}
+
+.about-page .sec-5-head {
+    letter-spacing: 1px;
+    padding-top: 48px;
+}
+
+.about-page .sec-5-para {
+    font-size: 12;
+}
+
+.about-page .inputfield {
+    display: flex;
+    background-color: white;
+    padding: 1rem 12.1875rem;
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: all 300ms;
+}
+
+.about-page .inputfield:hover {
+    background-color: #a8a8a8;
+}
+
+.about-page .input-main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.input-main .inputfield {
+    flex-basis: 30%;
+}
+
+.about-page .inputfield-2 {
+    margin-left: -10.25rem;
+    display: flex;
+}
+
+.about-page .inputfield-para {
+    margin-left: 1.5625rem;
+}
+
+.about-page .sec-6 {
+    margin: 50px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+.about-page .sec-6-heading {
+    padding-bottom: 10px;
+}
+
+.about-page .sec-6-input {
+    padding: 14px 28px;
+    margin: 6px;
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid rgb(114, 110, 110);
+}
+
+.about-page .sec-6-btn {
+    padding: 14px 28px;
+    width: 100%;
+    margin: 6px;
+    border-radius: 18px;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+
+/* Media Querry */
+
+@media (max-width: 768px) {
+    .about-page .sec-4-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .sec-4-container .card {
+        flex-basis: 50%;
+    }
+
+    .sec-3-main .my-container {
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .about-page .main-heading {
+        font-size: 40px;
+    }
+
+    .about-page .main-para {
+        font-size: 20px;
+    }
+
+    .about-page .section-2-heading {
+        font-size: 40px;
+        margin-top: 80px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .sec-4-container .card {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .about-page .main-heading {
+        font-size: 35px;
+    }
+
+    .about-page .main-para {
+        font-size: 18px;
+    }
+
+    .about-page .section-2-heading {
+        font-size: 35px;
+    }
+}
