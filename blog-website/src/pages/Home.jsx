@@ -13,7 +13,7 @@ const Home = () => {
             <Box className='home-page'>
                 <div className="header">
                     <div className="my-container">
-                        <h1>Hello, Welcome to<br />Discovry Blogs</h1>
+                        <h1>Hello, Welcome to<br /><span>Discovery Blogs</span></h1>
                     </div>
                 </div>
             </Box>

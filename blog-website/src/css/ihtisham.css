@@ -29,7 +29,6 @@
 nav {
   padding: 1.25rem 0;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   position: sticky;
   top: 0;
   z-index: 5;
@@ -65,25 +64,26 @@ nav .menu-btn {
 }
 
 .header {
-  min-height: calc(100vh - 5.875rem);
-  background: linear-gradient(rgba(25, 118, 210, 0.5), rgba(0, 0, 0, 0.5)), url(../images/header-bg.jpg);
+  height: 18.75rem;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 3.125rem;
+  border-radius: 32px;
+  background: linear-gradient(90deg, rgba(27, 27, 27, 0.8) 0%, rgba(27, 27, 27, 0.6) 100%), url(../images/header-bg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
-}
-.header .my-container {
-  padding-top: 21.875rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .header .my-container h1 {
   color: white;
   font-size: 3.375rem;
 }
 .header .my-container span {
-  font-family: "Alkatra";
-  color: #1976D2;
-  display: block;
-  font-size: 3.375rem;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .blogs-section {
@@ -199,8 +199,12 @@ nav .menu-btn {
 }
 
 .contact-header {
-  height: 31.25rem;
-  background: linear-gradient(rgba(25, 118, 210, 0.6), rgba(25, 118, 210, 0.6)), url(../images/Contact-bg.jpg);
+  height: 18.75rem;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 3.125rem;
+  border-radius: 32px;
+  background: linear-gradient(90deg, rgba(27, 27, 27, 0.8) 0%, rgba(27, 27, 27, 0.4) 100%), url(../images/Contact-bg.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -332,6 +336,12 @@ footer a {
 
 .add-post-page {
   margin-top: 50px;
+}
+.add-post-page .header {
+  background: linear-gradient(90deg, rgba(27, 27, 27, 0.8) 0%, rgba(27, 27, 27, 0.6) 100%), url(../images/addPost-bg.jpg);
+}
+.add-post-page .header .title-text h1 {
+  color: white;
 }
 
 .img-upload-btn {

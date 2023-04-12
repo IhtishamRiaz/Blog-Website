@@ -28,6 +28,7 @@ const Navbar = () => {
                             <li onClick={menuToggle}><Link to='/policy' className='nav-link'>Policy</Link></li>
                             <li onClick={menuToggle}><Link to='/contact' className='nav-link'>Contact</Link></li>
                             <li onClick={menuToggle}><Link to='/addPost' className='nav-link'>Add Post</Link></li>
+                            <li onClick={menuToggle}><Link to='/dashboard' className='nav-link'>Dashboard</Link></li>
                         </ul>
                     </div>
                     <div className="nav-btns">
