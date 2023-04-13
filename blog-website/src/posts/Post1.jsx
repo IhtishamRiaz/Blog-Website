@@ -19,7 +19,6 @@ const Post1 = () => {
     }, [])
 
 
-
     return (
         <div className='post-page page'>
             <div className="my-container">
@@ -34,10 +33,6 @@ const Post1 = () => {
 
                 <div className="post-content">
                     <div dangerouslySetInnerHTML={{ __html: currentBlog?.description }} />
-                    {/* <p>
-                        {currentBlog?.description}
-                    </p> */}
-
                 </div>
             </div>
             <Comments />

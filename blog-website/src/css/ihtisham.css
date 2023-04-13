@@ -127,6 +127,9 @@ nav .menu-btn {
 .blogs-container .blog-box p {
   color: #1976D2;
 }
+.blogs-container .blog-box p {
+  color: #1976D2;
+}
 .blogs-container .blog-box:hover {
   transform: scale(1.05);
 }

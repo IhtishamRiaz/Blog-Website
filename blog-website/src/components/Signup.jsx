@@ -10,6 +10,7 @@ const mainBox = {
     maxWidth: "400px",
     margin: "0 auto",
     marginTop: "100px",
+    marginBottom: "120px",
     display: "flex",
     flexDirection: "column",
     padding: "20px 30px",
