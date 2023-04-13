@@ -114,6 +114,7 @@ const Blogs = () => {
                 color='primary'
                 className="pagination-btns"
                 onChange={handlePaginationClick}
+                style={{ marginBottom: '3.125rem' }}
             />
         </>
     )

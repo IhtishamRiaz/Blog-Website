@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { blogs } from '../context/BlogsProvider';
 import { Box } from '@mui/system';
+import { TextField } from '@mui/material';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -15,16 +16,20 @@ const columns = [
 ];
 
 export default function UsersTable() {
+
     const { usersData } = useContext(blogs);
     const [filteredData, setFilteredData] = useState(usersData);
 
     const handleSearch = (search) => {
         const searchValue = search.target.value.toLowerCase();
+
         const filtered = usersData.filter((data) => {
+
             const firstName = data.firstName.toLowerCase();
             const lastName = data.lastName.toLowerCase();
             const id = data.id.toString().toLowerCase();
             const age = data.age.toString().toLowerCase();
+
             return (
                 firstName.includes(searchValue) ||
                 lastName.includes(searchValue) ||
@@ -32,18 +37,26 @@ export default function UsersTable() {
                 age.includes(searchValue)
             );
         });
+
         setFilteredData(filtered);
     };
 
-    useEffect(() => {
-        setFilteredData(usersData);
-    }, [usersData]);
+    // useEffect(() => {
+    //     setFilteredData(usersData);
+    // }, [usersData]);
 
     return (
         <Box className='user-table'>
             <div class="searchBox">
-                <input className='search' type="text" placeholder="Search" onChange={handleSearch} />
+                <TextField
+                    label="Search field"
+                    type="search"
+                    variant="outlined"
+                    onChange={handleSearch}
+                    size='large'
+                />
             </div>
+
             <div style={{ height: 600, width: '100%' }}>
                 <div style={{ marginBottom: 10 }}>
                 </div>

@@ -126,9 +126,7 @@ nav .menu-btn {
 }
 .blogs-container .blog-box p {
   color: #1976D2;
-}
-.blogs-container .blog-box p {
-  color: #1976D2;
+  padding: 0;
 }
 .blogs-container .blog-box:hover {
   transform: scale(1.05);
@@ -251,6 +249,7 @@ nav .menu-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 3.125rem;
 }
 .contact-links .contact-link-box {
   display: flex;
@@ -266,7 +265,6 @@ nav .menu-btn {
 footer {
   background: #1b1b1b;
   color: white;
-  margin-top: 3.125rem;
   padding: 2.5rem 0;
   text-align: left;
 }
@@ -277,6 +275,7 @@ footer .my-container {
 }
 footer .my-container p {
   font-size: 0.875rem;
+  color: white;
 }
 footer .footer-icons {
   font-size: 1.875rem;
@@ -327,7 +326,7 @@ footer .footer-icons .fa-brands:hover {
 }
 
 .add-post-page {
-  margin-top: 50px;
+  margin: 3.125rem 0;
 }
 .add-post-page .header {
   background: linear-gradient(90deg, rgba(27, 27, 27, 0.8) 0%, rgba(27, 27, 27, 0.6) 100%), url(../images/addPost-bg.jpg);
