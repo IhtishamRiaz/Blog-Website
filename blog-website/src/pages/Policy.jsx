@@ -12,13 +12,15 @@ const Policy = () => {
         <>
             <Box className='policy-page page'>
                 <div className='bg'>
-                    <h1>Policy</h1>
-                    <p>
-                        At our blog site, we are committed to protecting your privacy. This Privacy
-                        Policy outlines the types of personal information we may collect when you
-                        use our website, how we use that information, and how we protect it. By
-                        using our site, you consent to this Privacy Policy.
-                    </p>
+                    <div className='my-container'>
+                        <h1>Policy</h1>
+                        <p>
+                            At our blog site, we are committed to protecting your privacy. This Privacy
+                            Policy outlines the types of personal information we may collect when you
+                            use our website, how we use that information, and how we protect it. By
+                            using our site, you consent to this Privacy Policy.
+                        </p>
+                    </div>
                 </div>
                 <div className='sec-1'>
                     <div className='row'>
@@ -29,16 +31,16 @@ const Policy = () => {
                             <h2>What information do we collect?</h2>
                             <p>
                                 We may collect the following types of personal information from you when
-                                you use our site:<br/>
-                                Your name and email address, if you choose to sign up for our email list.<br/>
-                                Your IP address and browser type, as collected by our website analytics tools.<br/>
+                                you use our site:<br />
+                                Your name and email address, if you choose to sign up for our email list.<br />
+                                Your IP address and browser type, as collected by our website analytics tools.<br />
                                 Any other information you choose to provide to us through our contact forms or comments sections.
                             </p>
                             <h2>How do we use your information?</h2>
                             <p>
-                                We may use the information we collect from you in the following ways:<br/>
-                                To send periodic emails if you choose to sign up for our email list.<br/>
-                                To personalize your experience and provide you with tailored content.<br/>
+                                We may use the information we collect from you in the following ways:<br />
+                                To send periodic emails if you choose to sign up for our email list.<br />
+                                To personalize your experience and provide you with tailored content.<br />
                                 To improve our website based on your feedback.
                             </p>
                         </div>

@@ -34,11 +34,11 @@ const AddPost = () => {
         setBlogsList((prevState) => ([
             ...prevState,
             {
-                ['id']: idToUse,
-                ['title']: postTitle,
-                ['category']: postCategory,
-                ['image']: imgUrl,
-                ['description']: postDescription.current.getContent()
+                id: idToUse,
+                title: postTitle,
+                category: postCategory,
+                image: imgUrl,
+                description: postDescription.current.getContent()
             }
         ]))
     }

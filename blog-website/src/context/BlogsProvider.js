@@ -100,10 +100,11 @@ const BlogsProvider = ({ children }) => {
         { id: 7, lastName: 'Melisandre', firstName: 'John', age: 150, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom', regDate: '9 April' },
         { id: 8, lastName: 'Clifford', firstName: 'Ferrara', age: 44, gender: 'Male', mobile: '03546987465', email: 'sample@gmailcom', regDate: '9 April' },
         { id: 9, lastName: 'Frances', firstName: 'Rossini', age: 36, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom', regDate: '9 April' },
-        { id: 10, lastName: 'Roxie', firstName: 'Harvey', age: 65, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom', regDate: '10 April' },
-        { id: 11, lastName: 'Roxie', firstName: 'Harvey', age: 65, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom', regDate: '11 April' },
-        { id: 12, lastName: 'Roxie', firstName: 'Harvey', age: 65, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom', regDate: '11 April' },
+        { id: 10, lastName: 'Julie', firstName: 'Rock', age: 37, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom', regDate: '10 April' },
+        { id: 11, lastName: 'Roxie', firstName: 'Harvey', age: 25, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom', regDate: '11 April' },
+        { id: 12, lastName: 'Alizabeth', firstName: 'Stones', age: 75, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom', regDate: '11 April' },
         { id: 13, lastName: 'Roxie', firstName: 'Harvey', age: 65, gender: 'Female', mobile: '03546987465', email: 'sample@gmailcom', regDate: '11 April' },
+        { id: 14, lastName: 'Anna', firstName: 'Smith', age: 48, gender: 'Female', mobile: '03546741465', email: 'sample@gmailcom', regDate: '12 April' },
     ])
 
 

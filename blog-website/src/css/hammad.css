@@ -213,12 +213,11 @@
 }
 
 .about-page .sec-6 {
-    margin: 50px 0;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 30px;
-    padding-bottom: 50px;
+    padding: 50px 0;
 }
 
 .about-page .sec-6-heading {

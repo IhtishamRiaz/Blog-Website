@@ -126,9 +126,7 @@ nav .menu-btn {
 }
 .blogs-container .blog-box p {
   color: #1976D2;
-}
-.blogs-container .blog-box p {
-  color: #1976D2;
+  padding: 0;
 }
 .blogs-container .blog-box:hover {
   transform: scale(1.05);
@@ -251,6 +249,7 @@ nav .menu-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 3.125rem;
 }
 .contact-links .contact-link-box {
   display: flex;
@@ -264,40 +263,32 @@ nav .menu-btn {
 }
 
 footer {
-  background: -webkit-linear-gradient(0deg, #1976D2, #f18e95);
+  background: #1b1b1b;
   color: white;
-  margin-top: 3.125rem;
   padding: 2.5rem 0;
   text-align: left;
 }
-footer a {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-.footer-container {
+footer .my-container {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1.25rem;
 }
-.footer-container ul {
-  list-style: none;
+footer .my-container p {
+  font-size: 0.875rem;
+  color: white;
 }
-.footer-container ul li {
+footer .footer-icons {
+  font-size: 1.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+footer .footer-icons .fa-brands {
   cursor: pointer;
-  transition: all 300ms;
-  margin-bottom: 0.4375rem;
-  font-size: 1rem;
-  font-weight: 300;
 }
-.footer-container ul li:hover {
-  color: #0051ff;
-}
-.footer-container h1 {
-  font-size: 1.25rem;
-  margin-bottom: 0.9375rem;
+footer .footer-icons .fa-brands:hover {
+  color: #f18e95;
 }
 
 .post-page {
@@ -335,7 +326,7 @@ footer a {
 }
 
 .add-post-page {
-  margin-top: 50px;
+  margin: 3.125rem 0;
 }
 .add-post-page .header {
   background: linear-gradient(90deg, rgba(27, 27, 27, 0.8) 0%, rgba(27, 27, 27, 0.6) 100%), url(../images/addPost-bg.jpg);
@@ -470,6 +461,20 @@ footer a {
   }
   .contact-links .contact-link-box {
     flex-basis: 47%;
+  }
+  footer {
+    background: #1b1b1b;
+    color: white;
+    margin-top: 3.125rem;
+    padding: 2.5rem 0;
+    text-align: left;
+  }
+  footer .my-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 30px;
   }
 }
 @media (max-width: 400px) {
