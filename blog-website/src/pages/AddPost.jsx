@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { Button, TextField } from '@mui/material';
 import { blogs } from '../context/BlogsProvider';
 import FormControl from '@mui/material/FormControl';
@@ -6,17 +6,21 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { Editor } from '@tinymce/tinymce-react';
+import axios from 'axios'
 
 const AddPost = () => {
     const { blogsList, setBlogsList } = useContext(blogs);
     const [imgUrl, setImgUrl] = useState('');
     const [postCategory, setPostCategory] = useState('');
     const [postTitle, setPostTitle] = useState('')
+    const [selectedImg, setSelectedImg] = useState('')
     const postDescription = useRef(null);
 
     const handleImgChange = (e) => {
         const img = e.target.files[0];
         setImgUrl(URL.createObjectURL(img));
+        console.log(img);
+        setSelectedImg(img);
     }
 
     let idToUse = blogsList[blogsList.length - 1].id + 1;
@@ -28,24 +32,20 @@ const AddPost = () => {
     const handleTitleChange = (e) => {
         setPostTitle(e.target.value);
     }
-
     const handleSumbit = (e) => {
         e.preventDefault();
-        setBlogsList((prevState) => ([
-            ...prevState,
-            {
-                id: idToUse,
-                title: postTitle,
-                category: postCategory,
-                image: imgUrl,
-                description: postDescription.current.getContent()
-            }
-        ]))
+        const formData = new FormData();
+        formData.append("postImage", selectedImg);
+        formData.append("title", postTitle);
+        formData.append("postContent", postDescription.current.getContent());
+        formData.append("category", postCategory);
+        axios.post("http://localhost:8080/createPost", formData)
+            .then((result) => {
+                console.log(result);
+            })
     }
-    let allCategories = blogsList?.map(post => {
-        return post.category;
-    });
-    let uniqueCategories = [...new Set(allCategories)];
+
+    let uniqueCategories = ['travel', 'cricket', 'development', 'artificial intelligence'];
 
     return (
         <>

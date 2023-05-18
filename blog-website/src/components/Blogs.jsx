@@ -3,19 +3,24 @@ import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import { blogs } from '../context/BlogsProvider';
 import { Tab, Tabs, TextField } from '@mui/material';
-import AlternatePic from '../images/NoPostAvailable.gif'
+import AlternatePic from '../images/NoPostAvailable.gif';
+import { getAllPosts } from '../utils/HandleAPIs';
 
 
 const Blogs = () => {
-
-    const { blogsList } = useContext(blogs);
+    const { blogsList, setBlogsList } = useContext(blogs);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(9);
     const [tabValue, setTabValue] = useState(0);
-    const [currentBlogList, setCurrentBlogList] = useState(blogsList);
+    const [currentBlogList, setCurrentBlogList] = useState();
     const [querry, setQuerry] = useState('');
     const [isEmpty, setIsEmpty] = useState(false);
 
+    useEffect(() => {
+        setCurrentBlogList(blogsList);
+    }, [blogsList])
+
+    console.log(currentBlogList);
     let indexOfLastPost = postsPerPage * currentPage;
     let indexOfFirstPost = indexOfLastPost - postsPerPage;
 
@@ -29,7 +34,6 @@ const Blogs = () => {
     let categoryName = categoryList[tabValue];
 
     useEffect(() => {
-
         if (categoryName === 'all') {
             setCurrentBlogList(blogsList);
         }
@@ -46,14 +50,13 @@ const Blogs = () => {
     let totalPages = searchedList?.length;
 
     useEffect(() => {
-        if (searchedList.length === 0) {
+        if (searchedList?.length === 0) {
             setIsEmpty(true);
         }
         else {
             setIsEmpty(false);
         }
     }, [searchedList])
-
 
 
     return (
@@ -87,11 +90,12 @@ const Blogs = () => {
             <div className="blogs-container">
                 {
                     searchedList?.slice(indexOfFirstPost, indexOfLastPost)?.map((item) => {
-                        const { id, title, image } = item;
+                        const { _id, title, postImage } = item;
+                        const url = "http://localhost:8080/public/images/"
                         return (
-                            <Link className="blog-box route-link" key={id} to={`post/${id}`}>
+                            <Link className="blog-box route-link" key={_id} to={`post/${_id}`}>
                                 <div className="blog-pic" >
-                                    <img src={`${image}`} alt="" />
+                                    <img src={`${url}${postImage}`} alt="" />
                                 </div>
                                 <h3>{title}</h3>
                                 <p>Read More Here</p>

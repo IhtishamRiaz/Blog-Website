@@ -10,15 +10,15 @@ const Post1 = () => {
     const [currentBlog, setCurrentBlog] = useState();
 
     useEffect(() => {
-        let tempBlog = blogsList.find(item => item.id === parseInt(postid));
-
+        let tempBlog = blogsList?.find(item => item._id === postid);
         if (tempBlog) {
             setCurrentBlog(tempBlog);
         }
+
         window.scrollTo(0, 0);
-    }, [])
+    }, [blogsList]);
 
-
+    const url = "http://localhost:8080/public/images/"
     return (
         <div className='post-page page'>
             <div className="my-container">
@@ -28,11 +28,11 @@ const Post1 = () => {
                 </div>
 
                 <div className='post-img'>
-                    <img src={`${currentBlog?.image}`} alt="" />
+                    <img src={`${url}${currentBlog?.postImage}`} alt="" />
                 </div>
 
                 <div className="post-content">
-                    <div dangerouslySetInnerHTML={{ __html: currentBlog?.description }} />
+                    <div dangerouslySetInnerHTML={{ __html: currentBlog?.postContent }} />
                 </div>
             </div>
             <Comments />
