@@ -2,8 +2,9 @@ const express = require('express');
 const multer = require('multer');
 const postModel = require('../Schema/postSchema');
 const route = express.Router();
+const { authenticate } = require('../controllers/jwt-controller');
 
-
+// Posts Routes
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/images')
@@ -14,7 +15,8 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage });
 
-route.post('/createPost', upload.single('postImage'), async (req, res) => {
+// create Posts
+route.post('/createPost', authenticate, upload.single('postImage'), async (req, res) => {
     try {
         const postImage = req.file.filename;
         const { title, postContent, category } = req.body;
@@ -30,6 +32,8 @@ route.post('/createPost', upload.single('postImage'), async (req, res) => {
         res.status(500).json(error.message)
     }
 });
+
+// get Posts
 route.get('/getPosts', async (req, res) => {
     try {
         const result = await postModel.find({});

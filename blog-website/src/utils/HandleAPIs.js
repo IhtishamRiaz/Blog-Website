@@ -13,4 +13,18 @@ const getAllPosts = (setBlogsList) => {
         })
 }
 
-export { getAllPosts };
+const getCurrentUser = async (setCurrentUser, id) => {
+    try {
+        const config = {
+            headers: {
+                authorization: sessionStorage.getItem('accessToken')
+            }
+        };
+        const result = await axios.get(`/getUser/${id}`, config)
+        setCurrentUser(result);
+    } catch (error) {
+
+    }
+}
+
+export { getAllPosts, getCurrentUser };

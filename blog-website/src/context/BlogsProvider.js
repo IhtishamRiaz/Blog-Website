@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { getAllPosts } from '../utils/HandleAPIs';
 
+
 export const blogs = createContext();
 
 const BlogsProvider = ({ children }) => {
@@ -10,6 +11,11 @@ const BlogsProvider = ({ children }) => {
     }, [])
 
     const [blogsList, setBlogsList] = useState([]);
+    const [currentUser, setCurrentUser] = useState({
+        userId: '',
+        userName: '',
+        userRole: ''
+    });
 
     const blogData = [
         {
@@ -116,7 +122,7 @@ const BlogsProvider = ({ children }) => {
 
 
     return (
-        <blogs.Provider value={{ blogsList, setBlogsList, usersData, setUsersData }}>
+        <blogs.Provider value={{ blogsList, setBlogsList, usersData, setUsersData, currentUser, setCurrentUser }}>
             {children}
         </blogs.Provider>
     );

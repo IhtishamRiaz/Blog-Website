@@ -20,7 +20,6 @@ const Blogs = () => {
         setCurrentBlogList(blogsList);
     }, [blogsList])
 
-    console.log(currentBlogList);
     let indexOfLastPost = postsPerPage * currentPage;
     let indexOfFirstPost = indexOfLastPost - postsPerPage;
 

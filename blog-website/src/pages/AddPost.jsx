@@ -39,7 +39,12 @@ const AddPost = () => {
         formData.append("title", postTitle);
         formData.append("postContent", postDescription.current.getContent());
         formData.append("category", postCategory);
-        axios.post("http://localhost:8080/createPost", formData)
+        const config = {
+            headers: {
+                authorization: sessionStorage.getItem('accessToken')
+            }
+        };
+        axios.post("http://localhost:8080/createPost", formData, config)
             .then((result) => {
                 console.log(result);
             })

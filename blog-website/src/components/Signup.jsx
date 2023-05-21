@@ -1,10 +1,10 @@
-import { Typography, Paper, TextField, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Button } from '@mui/material';
+import { Typography, Paper, TextField, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Button, containerClasses } from '@mui/material';
 import { Box } from '@mui/system';
 import Reg from '@mui/icons-material/HowToReg';
 import LoginIcon from '@mui/icons-material/Login';
 import React, { useState } from 'react';
-import { blogs } from '../context/BlogsProvider';
-import { useContext } from 'react';
+import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom';
 
 const mainBox = {
     maxWidth: "400px",
@@ -33,76 +33,50 @@ const radioStyle = {
 }
 
 const Signup = () => {
-
-    const date = new Date();
-    const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-    ];
-    let day = date.getDate();
-    let month = date.getMonth();
-    let monthName = monthList[month];
-    let formattedDate = `${day} ${monthName}`
-
-    const { setUsersData, usersData } = useContext(blogs);
-    const [isSignUp, setIsSignUp] = useState(true);
+    const navigate = useNavigate();
+    const [error, setError] = useState();
     const [inputs, setInputs] = useState({
-        id: '',
         firstName: '',
         lastName: '',
         email: '',
         mobile: '',
-        age: '',
         gender: '',
         password: '',
-        regDate: '',
+        cPassword: ''
     });
-
-    const idToUse = usersData[usersData.length - 1].id + 1;
 
     const handleChange = (e) => {
         setInputs((prevState) => ({
             ...prevState,
-            id: idToUse,
-            regDate: formattedDate,
             [e.target.name]: e.target.value,
         }));
-    }
-    const handleSwitch = () => {
-        setIsSignUp(!isSignUp)
-        setInputs({
-            id: '',
-            firstName: '',
-            lastName: '',
-            email: '',
-            mobile: '',
-            age: '',
-            gender: '',
-            password: '',
-            regDate: '',
-        })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (inputs.firstName && inputs.lastName && inputs.email && inputs.mobile && inputs.age && inputs.gender && inputs.password) {
+        const URL = "http://localhost:8080";
 
-            setUsersData((prevState) => ([
-                ...prevState, inputs
-            ]))
+        axios.post(`${URL}/register`, inputs)
+            .then(() => {
+                setInputs({
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    mobile: '',
+                    gender: '',
+                    password: '',
+                    cPassword: ''
+                });
+                setError();
+                navigate('/login');
 
-            setInputs({
-                id: '',
-                firstName: '',
-                lastName: '',
-                email: '',
-                mobile: '',
-                age: '',
-                gender: '',
-                password: '',
-                regDate: '',
             })
-        }
-
+            .catch((error) => {
+                if (error.response) {
+                    setError(error.response.data.message)
+                }
+            })
     }
 
     return (
@@ -111,33 +85,26 @@ const Signup = () => {
                 <Paper style={mainBox} elevation={8} className='signup-box'>
                     <Box>
                         <Typography variant='h3' textAlign="center" color={"primary"}>
-                            {isSignUp ? 'Sign Up' : 'Login'}
-
+                            Sign Up
                         </Typography>
                     </Box>
                     <Box marginTop="40px">
-                        {
-                            isSignUp &&
-                            <>
-                                <TextField
-                                    type={"text"}
-                                    name='firstName'
-                                    value={inputs.firstName}
-                                    label="First Name"
-                                    style={inputStyle}
-                                    onChange={handleChange}
-                                />
-                                <TextField
-                                    type={"text"}
-                                    name='lastName'
-                                    value={inputs.lastName}
-                                    label="Last Name"
-                                    style={inputStyle}
-                                    onChange={handleChange}
-                                />
-                            </>
-                        }
-
+                        <TextField
+                            type={"text"}
+                            name='firstName'
+                            value={inputs.firstName}
+                            label="First Name"
+                            style={inputStyle}
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            type={"text"}
+                            name='lastName'
+                            value={inputs.lastName}
+                            label="Last Name"
+                            style={inputStyle}
+                            onChange={handleChange}
+                        />
                         <TextField
                             type={"email"}
                             name='email'
@@ -146,54 +113,37 @@ const Signup = () => {
                             style={inputStyle}
                             onChange={handleChange}
                         />
-
-                        {
-                            isSignUp && (
-                                <>
-                                    <TextField
-                                        type={"number"}
-                                        name='mobile'
-                                        value={inputs.mobile}
-                                        label="Mobile"
-                                        style={inputStyle}
-                                        onChange={handleChange}
-                                    />
-                                    <TextField
-                                        type={"number"}
-                                        name='age'
-                                        value={inputs.age}
-                                        label="Age"
-                                        style={inputStyle}
-                                        onChange={handleChange}
-                                    />
-
-                                    <FormControl
-                                        style={radioStyle}
-                                    >
-                                        <FormLabel>
-                                            Gender
-                                        </FormLabel>
-                                        <RadioGroup row>
-                                            <FormControlLabel
-                                                control={<Radio />}
-                                                label='Male'
-                                                name='gender'
-                                                value='Male'
-                                                onChange={handleChange}
-                                            />
-                                            <FormControlLabel
-                                                control={<Radio />}
-                                                label='Female'
-                                                name='gender'
-                                                value='Female'
-                                                onChange={handleChange}
-                                            />
-                                        </RadioGroup>
-                                    </FormControl>
-                                </>)
-                        }
-
-
+                        <TextField
+                            type={"number"}
+                            name='mobile'
+                            value={inputs.mobile}
+                            label="Mobile"
+                            style={inputStyle}
+                            onChange={handleChange}
+                        />
+                        <FormControl
+                            style={radioStyle}
+                        >
+                            <FormLabel>
+                                Gender
+                            </FormLabel>
+                            <RadioGroup row>
+                                <FormControlLabel
+                                    control={<Radio />}
+                                    label='Male'
+                                    name='gender'
+                                    value='Male'
+                                    onChange={handleChange}
+                                />
+                                <FormControlLabel
+                                    control={<Radio />}
+                                    label='Female'
+                                    name='gender'
+                                    value='Female'
+                                    onChange={handleChange}
+                                />
+                            </RadioGroup>
+                        </FormControl>
                         <TextField
                             type={"password"}
                             name='password'
@@ -202,25 +152,35 @@ const Signup = () => {
                             style={inputStyle}
                             onChange={handleChange}
                         />
-
+                        <TextField
+                            type={"password"}
+                            name='cPassword'
+                            value={inputs.cPassword}
+                            label="Confirm Password"
+                            style={inputStyle}
+                            onChange={handleChange}
+                        />
+                        {error &&
+                            <div className='error-container'><p>{error}</p></div>
+                        }
                         <Box style={btnContStyle}>
                             <Button
                                 type='submit'
                                 variant='contained'
                                 size='large'
                                 style={btnStyle}
-                                endIcon={isSignUp ? <Reg /> : <LoginIcon />}
+                                endIcon={<Reg />}
                             >
-                                {isSignUp ? 'Sign Up' : 'Login'}
+                                {'Sign Up'}
                             </Button>
-
-                            <Button size='large'
-                                style={btnStyle}
-                                endIcon={isSignUp ? <LoginIcon /> : <Reg />}
-                                onClick={handleSwitch}
-                            >
-                                {isSignUp ? 'Switch to Login' : 'Switch to Sign Up'}
-                            </Button>
+                            <Link to='/login'>
+                                <Button size='large'
+                                    style={btnStyle}
+                                    endIcon={<LoginIcon />}
+                                >
+                                    {'Switch to Login'}
+                                </Button>
+                            </Link>
                         </Box>
                     </Box>
                 </Paper>
