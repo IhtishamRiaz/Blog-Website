@@ -1,22 +1,18 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getAllPosts } from '../utils/HandleAPIs';
+import { getAllPosts, getCurrentUser } from '../utils/HandleAPIs';
 
 
 export const blogs = createContext();
 
 const BlogsProvider = ({ children }) => {
 
+    const [blogsList, setBlogsList] = useState([]);
+    const [currentUser, setCurrentUser] = useState({});
+
     useEffect(() => {
         getAllPosts(setBlogsList);
+        getCurrentUser(setCurrentUser)
     }, [])
-
-    const [blogsList, setBlogsList] = useState([]);
-    const [currentUser, setCurrentUser] = useState({
-        userId: '',
-        userName: '',
-        userRole: ''
-    });
-
     const blogData = [
         {
             id: 1,

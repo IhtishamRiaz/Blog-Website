@@ -8,7 +8,7 @@ import { getAllPosts } from '../utils/HandleAPIs';
 
 
 const Blogs = () => {
-    const { blogsList, setBlogsList } = useContext(blogs);
+    const { blogsList } = useContext(blogs);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(9);
     const [tabValue, setTabValue] = useState(0);

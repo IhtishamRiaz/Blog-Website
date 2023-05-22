@@ -40,6 +40,10 @@ const userSchema = new mongoose.Schema({
     regDate: {
         type: Date,
         default: () => Date.now()
+    },
+    profileImage: {
+        type: String,
+        default: ''
     }
 });
 
@@ -49,11 +53,12 @@ const validate = (data) => {
     const JoiSchema = Joi.object({
         firstName: Joi.string().required().label("First Name"),
         lastName: Joi.string().required().label("Last Name"),
+        profileImage: Joi.string().valid('').optional().label("Profile Image"),
         email: Joi.string().email().required().label("Email"),
         mobile: Joi.string().required().label("Mobile"),
         gender: Joi.string().required().label("Gender"),
         password: passwordComplexity().required().label("Password"),
-        cPassword: Joi.ref("password")
+        cPassword: Joi.any().equal(Joi.ref('password')).required().label('Confirm password').messages({ 'any.only': '{{#label}} does not match' })
     })
     return JoiSchema.validate(data);
 }

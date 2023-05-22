@@ -1,20 +1,33 @@
-import React, { useContext, useState, useRef, useEffect } from 'react';
-import { Button, TextField } from '@mui/material';
-import { blogs } from '../context/BlogsProvider';
+import React, { useState, useRef } from 'react';
+import { Alert, Button, Slide, Snackbar, TextField } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { Editor } from '@tinymce/tinymce-react';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const AddPost = () => {
-    const { blogsList, setBlogsList } = useContext(blogs);
     const [imgUrl, setImgUrl] = useState('');
     const [postCategory, setPostCategory] = useState('');
-    const [postTitle, setPostTitle] = useState('')
-    const [selectedImg, setSelectedImg] = useState('')
+    const [postTitle, setPostTitle] = useState('');
+    const [selectedImg, setSelectedImg] = useState('');
     const postDescription = useRef(null);
+    const [snackOpen, setSnackOpen] = useState(false);
+    const navigate = useNavigate();
+
+    function TransitionRight(props) {
+        return <Slide {...props} direction="right" />;
+    }
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setSnackOpen(false);
+    };
 
     const handleImgChange = (e) => {
         const img = e.target.files[0];
@@ -22,8 +35,6 @@ const AddPost = () => {
         console.log(img);
         setSelectedImg(img);
     }
-
-    let idToUse = blogsList[blogsList.length - 1].id + 1;
 
     const handleSelectChange = (e) => {
         setPostCategory(e.target.value);
@@ -41,12 +52,17 @@ const AddPost = () => {
         formData.append("category", postCategory);
         const config = {
             headers: {
-                authorization: sessionStorage.getItem('accessToken')
+                authorization: localStorage.getItem('accessToken')
             }
         };
         axios.post("http://localhost:8080/createPost", formData, config)
             .then((result) => {
                 console.log(result);
+                setSnackOpen(true);
+                setTimeout(() => {
+                    navigate('/');
+                    window.location.reload();
+                }, 2000);
             })
     }
 
@@ -127,6 +143,11 @@ const AddPost = () => {
                     </div>
                 </div>
             </div>
+            <Snackbar open={snackOpen} autoHideDuration={4000} onClose={handleClose} TransitionComponent={TransitionRight}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Post Added
+                </Alert>
+            </Snackbar>
         </>
     )
 }

@@ -365,6 +365,22 @@ footer .footer-icons .fa-brands:hover {
   margin-bottom: 30px;
 }
 
+.signup-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+.signup-img img {
+  height: 130px;
+  width: 130px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.signup-img input {
+  display: none;
+}
+
 @media (max-width: 1250px) {
   html {
     font-size: 90%;

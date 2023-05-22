@@ -13,17 +13,17 @@ const getAllPosts = (setBlogsList) => {
         })
 }
 
-const getCurrentUser = async (setCurrentUser, id) => {
+const getCurrentUser = async (setCurrentUser) => {
     try {
+        const uderId = localStorage.getItem('currentUser');
         const config = {
             headers: {
-                authorization: sessionStorage.getItem('accessToken')
+                authorization: localStorage.getItem('accessToken')
             }
         };
-        const result = await axios.get(`/getUser/${id}`, config)
-        setCurrentUser(result);
+        const result = await axios.get(`${URL}/getUser/${uderId}`, config);
+        setCurrentUser(result.data);
     } catch (error) {
-
     }
 }
 

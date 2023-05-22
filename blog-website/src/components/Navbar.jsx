@@ -1,18 +1,32 @@
-import { Avatar, Button } from '@mui/material'
-import React, { useContext, useEffect, useState } from 'react'
+import { Avatar, Box, Button, IconButton, Menu, Tooltip, MenuItem, Typography } from '@mui/material'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Reg from '@mui/icons-material/HowToReg';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Logo from '../images/logo.png'
 import { blogs } from '../context/BlogsProvider';
 
-const Navbar = ({ user, isAuthenticated }) => {
+const Navbar = ({ isAuthenticated }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { currentUser } = useContext(blogs);
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+    const handleLogout = () => {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('accessToken');
+        window.location.reload();
+    };
     const menuToggle = () => {
         setIsMenuOpen(!isMenuOpen)
-    }
+    };
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+    const url = "http://localhost:8080/public/images/"
     return (
         <>
             <nav>
@@ -28,27 +42,74 @@ const Navbar = ({ user, isAuthenticated }) => {
                             <li onClick={menuToggle}><Link to='/about' className='nav-link'>About</Link></li>
                             <li onClick={menuToggle}><Link to='/policy' className='nav-link'>Policy</Link></li>
                             <li onClick={menuToggle}><Link to='/contact' className='nav-link'>Contact</Link></li>
-
-                            {
-                                (currentUser.userRole === 'admin') ?
-                                    <>
-                                        <li onClick={menuToggle}><Link to='/addPost' className='nav-link'>Add Post</Link></li>
-                                    </>
-                                    : <></>
-                            }
-                            {
-                                (currentUser.userRole === 'superAdmin') ?
-                                    <>
-                                        <li onClick={menuToggle}><Link to='/addPost' className='nav-link'>Add Post</Link></li>
-                                        <li onClick={menuToggle}><Link to='/dashboard' className='nav-link'>Dashboard</Link></li>
-                                    </>
-                                    : <></>
-                            }
                         </ul>
                     </div>
                     <div className="nav-btns">
                         {
-                            isAuthenticated ? <Avatar sx={{ width: 46, height: 46 }} src="/broken-image.jpg" /> : <Link to='/register' className='route-link'><Button variant="outlined" endIcon={<Reg />}>Sign Up</Button></Link>
+                            isAuthenticated ?
+                                <Box sx={{ flexGrow: 0 }}>
+                                    <Tooltip title="Open settings">
+                                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                            <Avatar
+                                                alt={currentUser?.firstName}
+                                                src={`${url}${currentUser?.profileImage}`}
+                                                sx={{ width: 50, height: 50 }}
+                                            />
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Menu
+                                        sx={{ mt: '45px' }}
+                                        id="menu-appbar"
+                                        anchorEl={anchorElUser}
+                                        anchorOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        keepMounted
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        open={Boolean(anchorElUser)}
+                                        onClose={handleCloseUserMenu}
+                                    >
+                                        <MenuItem onClick={handleCloseUserMenu}>
+                                            <Typography textAlign="center">Profile</Typography>
+                                        </MenuItem>
+
+                                        {
+                                            (currentUser?.role === 'admin') ?
+                                                <Link to='/addPost' className='route-link'>
+                                                    <MenuItem onClick={handleCloseUserMenu}>
+                                                        <Typography textAlign="center">Add Post</Typography>
+                                                    </MenuItem>
+                                                </Link> : <></>
+                                        }
+                                        {
+                                            (currentUser?.role === 'superAdmin') ?
+                                                <>
+                                                    <Link to='/addPost' className='route-link'>
+                                                        <MenuItem onClick={handleCloseUserMenu}>
+                                                            <Typography textAlign="center">Add Post</Typography>
+                                                        </MenuItem>
+                                                    </Link>
+                                                    <Link to='/dashboard' className='route-link'>
+                                                        <MenuItem onClick={handleCloseUserMenu}>
+                                                            <Typography textAlign="center">Dashboard</Typography>
+                                                        </MenuItem>
+                                                    </Link>
+                                                </>
+                                                : <></>
+                                        }
+                                        <MenuItem onClick={() => { handleCloseUserMenu(); handleLogout() }}>
+                                            <Typography textAlign="center">Logout</Typography>
+                                        </MenuItem>
+                                    </Menu>
+                                </Box>
+
+                                : <Link to='/register' className='route-link'>
+                                    <Button variant="outlined" endIcon={<Reg />}>Sign Up</Button>
+                                </Link>
                         }
                         <MenuRoundedIcon className='menu-btn' onClick={menuToggle} />
                     </div>

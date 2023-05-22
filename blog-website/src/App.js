@@ -14,13 +14,7 @@ import AddPost from './pages/AddPost'
 import Dashboard from './pages/Dashboard'
 import Login from './components/Login'
 
-const PrivateRoute = ({ isAuthenticated, setIsAuthenticated, hideNavbarAndFooter, ...props }) => {
-  useEffect(() => {
-    const storedLoginStatus = localStorage.getItem('isLoggedIn');
-    if (storedLoginStatus === 'true') {
-      setIsAuthenticated(true);
-    }
-  }, []);
+const PrivateRoute = ({ isAuthenticated, hideNavbarAndFooter, ...props }) => {
   return isAuthenticated ?
     <>
       {!hideNavbarAndFooter && <Navbar isAuthenticated={isAuthenticated} />}
@@ -31,7 +25,7 @@ const PrivateRoute = ({ isAuthenticated, setIsAuthenticated, hideNavbarAndFooter
 }
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('accessToken'));
   const location = useLocation();
   const hideNavbarAndFooter = location.pathname === "/dashboard";
 
@@ -42,7 +36,7 @@ const App = () => {
           <Route exact path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
           <Route exact path='/register' element={<Signup />} />
 
-          <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} hideNavbarAndFooter={hideNavbarAndFooter} />}>
+          <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} hideNavbarAndFooter={hideNavbarAndFooter} />}>
             <Route exact path='/' element={<Home />} />
             <Route exact path='/about' element={<About />} />
             <Route exact path='/policy' element={<Policy />} />

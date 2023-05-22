@@ -4,7 +4,7 @@ const postModel = require('../Schema/postSchema');
 const route = express.Router();
 const { authenticate } = require('../controllers/jwt-controller');
 
-// Posts Routes
+// Post Pic
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/images')

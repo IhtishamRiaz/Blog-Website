@@ -472,6 +472,27 @@ footer {
 
 // Dashboard Page Ends
 
+// SignUp Starts
+.signup-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+
+    img {
+        height: 130px;
+        width: 130px;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+
+    input {
+        display: none;
+    }
+}
+
+// SignUp Ends
+
 // Media Querry
 @media (max-width: 1250px) {
     html {

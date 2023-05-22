@@ -27,7 +27,7 @@ route.post('/login', async (req, res) => {
         const isPassword = await bcrypt.compare(password, isUser.password);
         if (!isPassword) return res.status(401).send({ message: "Invalid Email or Password" });
 
-        const accessToken = jwt.sign(isUser.toJSON(), process.env.ACCESS_SCERET_KEY, { expiresIn: '15m' });
+        const accessToken = jwt.sign(isUser.toJSON(), process.env.ACCESS_SCERET_KEY, { expiresIn: '1d' });
         const refreshToken = jwt.sign(isUser.toJSON(), process.env.REFRESH_SCERET_KEY);
 
         const newToken = new tokenModel({ token: refreshToken });

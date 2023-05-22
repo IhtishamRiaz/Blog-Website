@@ -1,12 +1,13 @@
-import { Typography, Paper, TextField, Button } from '@mui/material';
+import { Typography, Paper, TextField, Button, Slide, Snackbar, Alert, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton } from '@mui/material';
 import { Box } from '@mui/system';
 import Reg from '@mui/icons-material/HowToReg';
 import LoginIcon from '@mui/icons-material/Login';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-import { blogs } from '../context/BlogsProvider';
 import { useNavigate } from 'react-router-dom';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const mainBox = {
     maxWidth: "400px",
@@ -34,12 +35,19 @@ const btnContStyle = {
 const Login = ({ setIsAuthenticated }) => {
 
     const navigate = useNavigate();
-    const { setCurrentUser } = useContext(blogs);
     const [error, setError] = useState();
+    const [showPassword, setShowPassword] = useState(false);
+    const [snackOpen, setSnackOpen] = useState(false);
     const [inputs, setInputs] = useState({
         email: '',
         password: ''
     });
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
 
     const handleChange = (e) => {
         setInputs((prevState) => ({
@@ -54,21 +62,16 @@ const Login = ({ setIsAuthenticated }) => {
 
         axios.post(`${URL}/login`, inputs)
             .then((response) => {
-                setInputs({
-                    email: '',
-                    password: ''
-                });
                 setError();
-                sessionStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`);
+                localStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`);
                 sessionStorage.setItem('refreshToken', `Bearer ${response.data.refreshToken}`);
-                setCurrentUser({
-                    userId: response.data.userId,
-                    userName: response.data.userName,
-                    userRole: response.data.userRole
-                });
-                navigate('/');
+                localStorage.setItem('currentUser', response.data.userId);
                 setIsAuthenticated(true);
-                localStorage.setItem('isLoggedIn', 'true');
+                setSnackOpen(true);
+                setTimeout(() => {
+                    navigate('/');
+                    window.location.reload();
+                }, 2000);
             })
             .catch((error) => {
                 if (error.response) {
@@ -76,6 +79,16 @@ const Login = ({ setIsAuthenticated }) => {
                 }
             })
     }
+    function TransitionDown(props) {
+        return <Slide {...props} direction="down" />;
+    }
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setSnackOpen(false);
+    };
 
     return (
         <>
@@ -95,14 +108,37 @@ const Login = ({ setIsAuthenticated }) => {
                             style={inputStyle}
                             onChange={handleChange}
                         />
-                        <TextField
+                        {/* <TextField
                             type={"password"}
                             name='password'
                             value={inputs.password}
                             label="Password"
                             style={inputStyle}
                             onChange={handleChange}
-                        />
+                        /> */}
+                        <FormControl sx={{ width: '100%' }} variant="outlined">
+                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <OutlinedInput
+                                type={showPassword ? 'text' : 'password'}
+                                name='password'
+                                value={inputs.password}
+                                label="Password"
+                                style={inputStyle}
+                                onChange={handleChange}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                            edge="end"
+                                        >
+                                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
                         {
                             error &&
                             <p>{error}</p>
@@ -129,6 +165,16 @@ const Login = ({ setIsAuthenticated }) => {
                     </Box>
                 </Paper>
             </form>
+            <Snackbar open={snackOpen}
+                autoHideDuration={4000}
+                onClose={handleClose}
+                TransitionComponent={TransitionDown}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Logged in Successfully!
+                </Alert>
+            </Snackbar>
         </>
     );
 }
