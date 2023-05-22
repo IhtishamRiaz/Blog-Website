@@ -1,6 +1,6 @@
 import { Avatar, Box, Button, IconButton, Menu, Tooltip, MenuItem, Typography } from '@mui/material'
 import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Reg from '@mui/icons-material/HowToReg';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Logo from '../images/logo.png'
@@ -10,11 +10,13 @@ const Navbar = ({ isAuthenticated }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { currentUser } = useContext(blogs);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         localStorage.removeItem('currentUser');
         localStorage.removeItem('accessToken');
         window.location.reload();
+        navigate('/');
     };
     const menuToggle = () => {
         setIsMenuOpen(!isMenuOpen)
@@ -88,12 +90,12 @@ const Navbar = ({ isAuthenticated }) => {
                                         {
                                             (currentUser?.role === 'superAdmin') ?
                                                 <>
-                                                    <Link to='/addPost' className='route-link'>
+                                                    <Link to='/user/addPost' className='route-link'>
                                                         <MenuItem onClick={handleCloseUserMenu}>
                                                             <Typography textAlign="center">Add Post</Typography>
                                                         </MenuItem>
                                                     </Link>
-                                                    <Link to='/dashboard' className='route-link'>
+                                                    <Link to='/user/dashboard' className='route-link'>
                                                         <MenuItem onClick={handleCloseUserMenu}>
                                                             <Typography textAlign="center">Dashboard</Typography>
                                                         </MenuItem>

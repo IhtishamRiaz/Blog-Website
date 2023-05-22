@@ -14,39 +14,37 @@ import AddPost from './pages/AddPost'
 import Dashboard from './pages/Dashboard'
 import Login from './components/Login'
 
-const PrivateRoute = ({ isAuthenticated, hideNavbarAndFooter, ...props }) => {
-  return isAuthenticated ?
-    <>
-      {!hideNavbarAndFooter && <Navbar isAuthenticated={isAuthenticated} />}
-      <Outlet />
-      {!hideNavbarAndFooter && <Footer />}
-    </>
-    : <Navigate replace to='/login' />
+const PrivateRoute = ({ isAuthenticated, ...props }) => {
+  return isAuthenticated ? <Outlet /> : <Navigate replace to='/login' />
 }
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('accessToken'));
   const location = useLocation();
-  const hideNavbarAndFooter = location.pathname === "/dashboard";
+  const hideNavbarAndFooter = location.pathname === "/user/dashboard" || location.pathname === "/login" || location.pathname === "/register";
 
   return (
     <>
       <BlogsProvider>
+        {!hideNavbarAndFooter && <Navbar isAuthenticated={isAuthenticated} />}
         <Routes>
+
           <Route exact path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
           <Route exact path='/register' element={<Signup />} />
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/about' element={<About />} />
+          <Route exact path='/policy' element={<Policy />} />
+          <Route exact path='/contact' element={<Contact />} />
+          <Route exact path='/post/:postid' element={<Post1 />} />
+          <Route path='/*' element={<Error />} />
 
-          <Route path='/' element={<PrivateRoute isAuthenticated={isAuthenticated} hideNavbarAndFooter={hideNavbarAndFooter} />}>
-            <Route exact path='/' element={<Home />} />
-            <Route exact path='/about' element={<About />} />
-            <Route exact path='/policy' element={<Policy />} />
-            <Route exact path='/contact' element={<Contact />} />
-            <Route exact path='/post/:postid' element={<Post1 />} />
-            <Route exact path='/addPost' element={<AddPost />} />
-            <Route exact path='/dashboard' element={<Dashboard />} />
-            <Route path='/*' element={<Error />} />
+          <Route path='/user' element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
+            <Route exact path='addPost' element={<AddPost />} />
+            <Route exact path='dashboard' element={<Dashboard />} />
           </Route>
+
         </Routes>
+        {!hideNavbarAndFooter && <Footer />}
       </BlogsProvider>
     </>
   )
