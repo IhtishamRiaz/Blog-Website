@@ -1,9 +1,13 @@
-import { Button, IconButton, Rating, TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import EditIcon from '@mui/icons-material/EditRounded';
-import DeleteIcon from '@mui/icons-material/DeleteTwoTone';
+import { Alert, Avatar, Button, IconButton, Rating, Slide, Snackbar, TextField, Tooltip } from '@mui/material';
+import React, { useEffect, useState, useContext } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import { red } from '@mui/material/colors';
+import axios from 'axios';
+import { blogs } from '../context/BlogsProvider';
+import { addComment, deleteComment, getAllComments, updateComment } from '../utils/HandleAPIs';
 
-const Comments = () => {
+const Comments = ({ postId }) => {
 
     const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
     ];
@@ -17,19 +21,27 @@ const Comments = () => {
     let formatedTime = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     let properDate = monthName + " " + day + ", " + year + " at " + formatedTime;
 
-    const [commentsArray, setCommentsArray] = useState([]);
+    const { currentUser, allComments, setAllComments } = useContext(blogs);
+    const [commentsArray, setCommentsArray] = useState(allComments);
+    const [snackOpen, setSnackOpen] = useState(false);
+    const [snackMessage, setSnackMessage] = useState('');
     const [idToEdit, setIdToEdit] = useState();
     const [isEdit, setIsEdit] = useState(false);
     const [ratingValue, setRatingValue] = useState(0);
-
     const [commentInput, setCommentInput] = useState({
-        id: '',
-        name: '',
-        email: '',
         commentText: '',
         commentTime: '',
         ratings: 0,
     });
+
+    const snackOpener = (message) => {
+        setSnackMessage(message);
+        setSnackOpen(true);
+    }
+
+    const filteredComments = allComments?.filter((comment) => {
+        return comment.postId === postId;
+    })
 
     useEffect(() => {
         setCommentInput((prevState) => ({
@@ -40,69 +52,95 @@ const Comments = () => {
 
 
     const handleChange = (e) => {
-        let idSet = Math.floor(Math.random() * 1000000)
-
         setCommentInput((prevState) => ({
             ...prevState,
-            id: idSet,
             commentTime: properDate,
             [e.target.name]: e.target.value,
         }));
     }
 
+    // Handle Submit
     const handleCommentSubmit = (e) => {
         e.preventDefault();
+        if (commentInput.commentText) {
 
-        if (commentInput.name && commentInput.email && commentInput.commentText) {
-
-            setCommentsArray((prevState) =>
-                [
-                    ...prevState,
-                    commentInput
-                ]
-            )
-
-            setCommentInput({
-                id: '',
-                name: '',
-                email: '',
-                commentText: '',
-                commentTime: '',
-                ratings: 0,
-            });
-            setRatingValue(0);
+            if (!isEdit) {
+                const commentAuthorName = `${currentUser?.firstName} ${currentUser?.lastName}`
+                const commentData = {
+                    commentContent: commentInput.commentText,
+                    created: commentInput.commentTime,
+                    updated: "",
+                    commentAuthor: commentAuthorName,
+                    commentAuthorId: currentUser?._id,
+                    commentAuthorImg: currentUser?.profileImage,
+                    postId: postId,
+                    ratings: commentInput.ratings
+                }
+                addComment(commentData)
+                    .then((result) => {
+                        setCommentInput({
+                            commentText: '',
+                            commentTime: '',
+                            ratings: 0,
+                        });
+                        setRatingValue(0);
+                        getAllComments(setAllComments);
+                        setTimeout(() => {
+                            snackOpener('Comment Added!');
+                        }, 200);
+                    })
+            }
         }
     }
 
-    const delComment = (id) => {
+    // Handle Delete
+    const delComment = async (id) => {
+        await deleteComment(id);
+        getAllComments(setAllComments);
+        setTimeout(() => {
+            snackOpener('Comment Deleted!');
+        }, 200);
         const tempArray = [...commentsArray];
         tempArray.splice(id, 1);
         setCommentsArray(tempArray);
     }
 
     const editComment = (id) => {
-
+        const commentToBeEdited = filteredComments?.find((comment) => {
+            return comment._id === id;
+        })
         setCommentInput({
-            id: commentsArray[id].id,
-            name: commentsArray[id].name,
-            email: commentsArray[id].email,
-            commentText: commentsArray[id].commentText,
-            commentTime: commentsArray[id].commentTime,
-            ratings: commentsArray[id].ratings,
+            commentText: commentToBeEdited.commentContent,
+            commentTime: commentToBeEdited.created,
+            ratings: commentToBeEdited.ratings,
         })
         setIdToEdit(id);
         setIsEdit(true);
-        setRatingValue(commentsArray[id].ratings)
+        setRatingValue(commentToBeEdited.ratings)
     }
 
+    // Submit Comment
     const submitEditedComment = () => {
-        const tempArray = [...commentsArray];
-        tempArray.splice(idToEdit, 1, commentInput);
-        setCommentsArray(tempArray);
+        const commentData = {
+            commentContent: commentInput.commentText,
+            updated: commentInput.commentTime,
+            ratings: commentInput.ratings,
+        }
+        updateComment(commentData, idToEdit)
+            .then((result) => {
+                setCommentInput({
+                    commentText: '',
+                    commentTime: '',
+                    ratings: 0,
+                });
+                setRatingValue(0);
+                getAllComments(setAllComments);
+                setTimeout(() => {
+                    snackOpener('Comment Updated!');
+                }, 200);
+            });
+
         setCommentInput({
-            id: '',
-            name: '',
-            email: '',
             commentText: '',
             commentTime: '',
             ratings: 0,
@@ -110,6 +148,17 @@ const Comments = () => {
         setIsEdit(false);
         setRatingValue(0);
     }
+
+    function TransitionRight(props) {
+        return <Slide {...props} direction="right" />;
+    }
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setSnackOpen(false);
+    };
     return (
         <>
             <div className="my-container">
@@ -118,26 +167,6 @@ const Comments = () => {
                         <h1>Leave a Comment</h1>
                     </div>
                     <form onSubmit={handleCommentSubmit}>
-                        <TextField
-                            name='name'
-                            type='text'
-                            label="Name"
-                            variant="outlined"
-                            fullWidth
-                            className='form-fields'
-                            value={commentInput.name}
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            name='email'
-                            type='email'
-                            label="Email"
-                            variant="outlined"
-                            fullWidth
-                            className='comment-form-fields'
-                            value={commentInput.email}
-                            onChange={handleChange}
-                        />
                         <TextField
                             name='commentText'
                             label="Comment"
@@ -178,27 +207,43 @@ const Comments = () => {
                         }
                     </form>
                 </div>
-
                 {/* Comments Container */}
                 <div className="comments-container">
                     {
-                        commentsArray.map((elem, id) => {
-                            const { name, commentText, commentTime, ratings } = elem;
+                        filteredComments?.map((elem) => {
+                            const { commentAuthor, commentAuthorImg, commentContent, created, ratings, commentAuthorId, _id: id } = elem;
                             return (
                                 <div className="comment-row" key={id}>
                                     <div className="comment-header">
-                                        <h3>{name}</h3>
-                                        <p>{commentTime}</p>
+                                        <div className="comment-author">
+                                            <Avatar
+                                                alt={commentAuthor}
+                                                src={`http://localhost:8080/public/images/${commentAuthorImg}`}
+                                                sx={{ width: 40, height: 40 }}
+                                            />
+                                            <h3>{commentAuthor}</h3>
+                                        </div>
+                                        <p>{created}</p>
                                     </div>
                                     <div className="comment-content">
-                                        <p>{commentText}</p>
+                                        <p>{commentContent}</p>
                                         <div className="comment-btns-container">
-                                            <IconButton color='primary' onClick={() => editComment(id)}>
-                                                <EditIcon className="comment-btn" />
-                                            </IconButton>
-                                            <IconButton color='error' onClick={() => delComment(id)}>
-                                                <DeleteIcon className="comment-btn" />
-                                            </IconButton>
+                                            {
+                                                (currentUser._id === commentAuthorId) ?
+                                                    <>
+                                                        <Tooltip title='Edit'>
+                                                            <IconButton color="primary" onClick={() => editComment(id)}>
+                                                                <EditIcon />
+                                                            </IconButton>
+                                                        </Tooltip>
+                                                        <Tooltip title='Delete'>
+                                                            <IconButton color="primary" sx={{ color: red[500] }} onClick={() => delComment(id)}>
+                                                                <DeleteIcon />
+                                                            </IconButton>
+                                                        </Tooltip>
+                                                    </> : <></>
+                                            }
+
                                         </div>
                                     </div>
                                     <div className="comment-ratings">
@@ -210,7 +255,16 @@ const Comments = () => {
                     }
 
                 </div>
-            </div>
+            </div >
+            <Snackbar open={snackOpen}
+                autoHideDuration={2000}
+                onClose={handleClose}
+                TransitionComponent={TransitionRight}
+            >
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    {snackMessage}
+                </Alert>
+            </Snackbar>
         </>
     )
 }

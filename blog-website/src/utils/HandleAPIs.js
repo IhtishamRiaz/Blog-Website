@@ -1,6 +1,11 @@
 import axios from "axios";
 
 const URL = "http://localhost:8080";
+const config = {
+    headers: {
+        authorization: localStorage.getItem('accessToken')
+    }
+};
 
 const getAllPosts = (setBlogsList) => {
     axios
@@ -9,22 +14,50 @@ const getAllPosts = (setBlogsList) => {
             setBlogsList(data);
         })
         .catch((error) => {
-            console.log(error.message);
         })
 }
 
 const getCurrentUser = async (setCurrentUser) => {
     try {
         const uderId = localStorage.getItem('currentUser');
-        const config = {
-            headers: {
-                authorization: localStorage.getItem('accessToken')
-            }
-        };
         const result = await axios.get(`${URL}/getUser/${uderId}`, config);
         setCurrentUser(result.data);
     } catch (error) {
     }
 }
 
-export { getAllPosts, getCurrentUser };
+// Add Comment
+const addComment = async (commentData) => {
+    try {
+        await axios.post(`${URL}/addComment`, commentData, config)
+    } catch (error) {
+    }
+}
+
+// Get All Comments
+const getAllComments = (setAllComments) => {
+    axios
+        .get(`${URL}/getComments`)
+        .then(({ data }) => {
+            setAllComments(data);
+            console.log('Comments Called');
+        })
+}
+
+// Delete Comment
+const deleteComment = async (commentId) => {
+    try {
+        await axios.delete(`${URL}/delComment/${commentId}`, config);
+    } catch (error) {
+    }
+}
+// Update Comment
+const updateComment = async (commentData, idToEdit) => {
+    try {
+        await axios.patch(`${URL}/updateComment/${idToEdit}`, commentData, config)
+    } catch (error) {
+    }
+}
+
+
+export { getAllPosts, getCurrentUser, getAllComments, deleteComment, updateComment, addComment };

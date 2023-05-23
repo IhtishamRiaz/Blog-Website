@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getAllPosts, getCurrentUser } from '../utils/HandleAPIs';
+import { getAllComments, getAllPosts, getCurrentUser } from '../utils/HandleAPIs';
 
 
 export const blogs = createContext();
@@ -7,12 +7,15 @@ export const blogs = createContext();
 const BlogsProvider = ({ children }) => {
 
     const [blogsList, setBlogsList] = useState([]);
+    const [allComments, setAllComments] = useState([]);
     const [currentUser, setCurrentUser] = useState({});
 
     useEffect(() => {
         getAllPosts(setBlogsList);
         getCurrentUser(setCurrentUser)
+        getAllComments(setAllComments)
     }, [])
+
     const blogData = [
         {
             id: 1,
@@ -118,7 +121,7 @@ const BlogsProvider = ({ children }) => {
 
 
     return (
-        <blogs.Provider value={{ blogsList, setBlogsList, usersData, setUsersData, currentUser, setCurrentUser }}>
+        <blogs.Provider value={{ blogsList, setBlogsList, usersData, setUsersData, currentUser, setCurrentUser, allComments, setAllComments }}>
             {children}
         </blogs.Provider>
     );

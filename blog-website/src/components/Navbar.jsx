@@ -81,7 +81,7 @@ const Navbar = ({ isAuthenticated }) => {
 
                                         {
                                             (currentUser?.role === 'admin') ?
-                                                <Link to='/addPost' className='route-link'>
+                                                <Link to='/user/addPost' className='route-link'>
                                                     <MenuItem onClick={handleCloseUserMenu}>
                                                         <Typography textAlign="center">Add Post</Typography>
                                                     </MenuItem>

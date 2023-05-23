@@ -19,17 +19,20 @@ const upload = multer({ storage: storage });
 route.post('/createPost', authenticate, upload.single('postImage'), async (req, res) => {
     try {
         const postImage = req.file.filename;
-        const { title, postContent, category } = req.body;
+        const { title, postContent, category, postAuthor, postAuthorId, postAuthorImg } = req.body;
         const newPost = new postModel({
             title,
             postContent,
             category,
-            postImage
+            postImage,
+            postAuthor,
+            postAuthorId,
+            postAuthorImg
         });
-        const result = await newPost.save();
-        res.status(201).json(result);
+        await newPost.save();
+        res.status(201).json("Post Created Successfully");
     } catch (error) {
-        res.status(500).json(error.message)
+        res.status(500).json("Internal Server Error")
     }
 });
 
@@ -39,7 +42,7 @@ route.get('/getPosts', async (req, res) => {
         const result = await postModel.find({});
         res.status(201).json(result);
     } catch (error) {
-        res.status(404).json(error.message);
+        res.status(404).json("Posts Not Found");
     }
 })
 

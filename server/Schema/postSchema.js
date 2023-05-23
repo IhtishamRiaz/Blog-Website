@@ -20,7 +20,20 @@ const postSchema = new mongoose.Schema({
     created: {
         type: Date,
         default: () => Date.now()
-    }
+    },
+    postAuthor: {
+        type: String,
+        required: true
+    },
+    postAuthorId: {
+        type: String,
+        required: true
+    },
+    postAuthorImg: {
+        type: String,
+        required: true
+    },
+
 });
 
 const postModel = mongoose.model('Post', postSchema);

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { Alert, Button, Slide, Snackbar, TextField } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -7,8 +7,10 @@ import MenuItem from '@mui/material/MenuItem';
 import { Editor } from '@tinymce/tinymce-react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { blogs } from '../context/BlogsProvider'
 
 const AddPost = () => {
+    const { currentUser } = useContext(blogs);
     const [imgUrl, setImgUrl] = useState('');
     const [postCategory, setPostCategory] = useState('');
     const [postTitle, setPostTitle] = useState('');
@@ -45,11 +47,15 @@ const AddPost = () => {
     }
     const handleSumbit = (e) => {
         e.preventDefault();
+        const authorName = `${currentUser.firstName} ${currentUser.lastName}`
         const formData = new FormData();
         formData.append("postImage", selectedImg);
         formData.append("title", postTitle);
         formData.append("postContent", postDescription.current.getContent());
         formData.append("category", postCategory);
+        formData.append("postAuthorId", currentUser._id);
+        formData.append("postAuthor", authorName);
+        formData.append("postAuthorImg", currentUser.profileImage);
         const config = {
             headers: {
                 authorization: localStorage.getItem('accessToken')

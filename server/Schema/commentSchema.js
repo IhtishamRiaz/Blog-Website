@@ -6,12 +6,33 @@ const commentSchema = new mongoose.Schema({
         required: true
     },
     created: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: ''
     },
     updated: {
-        type: Date,
-        default: () => Date.now()
+        type: String,
+        default: ''
+    },
+    commentAuthor: {
+        type: String,
+        required: true
+    },
+    commentAuthorId: {
+        type: String,
+        required: true
+    },
+    commentAuthorImg: {
+        type: String,
+        required: true
+    },
+    postId: {
+        type: String,
+        required: true
+    },
+    ratings: {
+        type: Number,
+        min: 0.5,
+        required: true
     }
 });
 

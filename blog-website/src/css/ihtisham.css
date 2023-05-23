@@ -176,6 +176,12 @@ nav .menu-btn {
   margin: 0;
   color: #1976D2;
 }
+.comments-container .comment-header .comment-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
 .comments-container .comment-content {
   display: flex;
   justify-content: space-between;
@@ -186,14 +192,11 @@ nav .menu-btn {
   padding: 5px 0;
 }
 .comments-container .comment-content .comment-btns-container {
-  display: none;
+  display: flex;
   flex-basis: 5%;
 }
 .comments-container .comment-content .comment-btns-container .comment-btn {
   cursor: pointer;
-}
-.comments-container .comment-row:hover .comment-btns-container {
-  display: flex;
 }
 
 .contact-header {
@@ -304,18 +307,34 @@ footer .footer-icons .fa-brands:hover {
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
 }
+.post-page h3 {
+  font-weight: 600;
+}
 .post-page p {
   margin-bottom: 0.75rem;
   line-height: 1.75rem;
 }
 .post-page .post-img {
   margin: 3.125rem auto;
+  margin-bottom: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .post-page .post-img img {
   max-width: 100%;
+}
+.post-page .post-author-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.875rem;
+}
+.post-page .post-author-info .post-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
 }
 
 .error-page {
