@@ -43,7 +43,6 @@ route.post('/login', async (req, res) => {
     } catch (error) {
         res.status(500).send({ message: "Internal Server Error" });
     }
-
 });
 
 module.exports = route;

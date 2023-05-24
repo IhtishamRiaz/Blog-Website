@@ -13,6 +13,7 @@ import BlogsProvider from './context/BlogsProvider'
 import AddPost from './pages/AddPost'
 import Dashboard from './pages/Dashboard'
 import Login from './components/Login'
+import EditPost from './pages/EditPost'
 
 const PrivateRoute = ({ isAuthenticated, ...props }) => {
   return isAuthenticated ? <Outlet /> : <Navigate replace to='/login' />
@@ -40,6 +41,7 @@ const App = () => {
 
           <Route path='/user' element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
             <Route exact path='addPost' element={<AddPost />} />
+            <Route exact path='editPost/:postId' element={<EditPost />} />
             <Route exact path='dashboard' element={<Dashboard />} />
           </Route>
 

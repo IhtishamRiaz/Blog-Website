@@ -1,17 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Comments from '../components/Comments'
 import { blogs } from '../context/BlogsProvider';
-import { useParams } from 'react-router-dom';
-import { Avatar, IconButton, Tooltip } from '@mui/material';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Alert, Avatar, IconButton, Slide, Snackbar, Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { red } from '@mui/material/colors';
+import { deletePost, getAllPosts } from '../utils/HandleAPIs';
 
 const Post1 = () => {
 
+    const navigate = useNavigate();
     const { blogsList, currentUser } = useContext(blogs);
     let { postid } = useParams();
     const [currentBlog, setCurrentBlog] = useState();
+    const [snackOpen, setSnackOpen] = useState(false);
 
     useEffect(() => {
         let tempBlog = blogsList?.find(item => item._id === postid);
@@ -21,6 +24,28 @@ const Post1 = () => {
 
         window.scrollTo(0, 0);
     }, [blogsList]);
+
+    const delPost = async () => {
+        await deletePost(currentBlog?._id)
+        getAllPosts();
+        setSnackOpen(true);
+        setTimeout(() => {
+            navigate('/');
+            window.location.reload();
+        }, 1500);
+
+    }
+
+    function TransitionRight(props) {
+        return <Slide {...props} direction="right" />;
+    }
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setSnackOpen(false);
+    };
 
     const url = "http://localhost:8080/public/images/"
     return (
@@ -48,12 +73,14 @@ const Post1 = () => {
                             (currentUser?._id === currentBlog?.postAuthorId) ?
                                 <>
                                     <Tooltip title='Edit'>
-                                        <IconButton color="primary">
-                                            <EditIcon />
-                                        </IconButton>
+                                        <Link to={`/user/editPost/${currentBlog?._id}`}>
+                                            <IconButton color="primary">
+                                                <EditIcon />
+                                            </IconButton>
+                                        </Link>
                                     </Tooltip>
                                     <Tooltip title='Delete'>
-                                        <IconButton color="primary" sx={{ color: red[500] }}>
+                                        <IconButton color="primary" sx={{ color: red[500] }} onClick={delPost}>
                                             <DeleteIcon />
                                         </IconButton>
                                     </Tooltip>
@@ -66,6 +93,15 @@ const Post1 = () => {
                 </div>
             </div>
             <Comments postId={currentBlog?._id} />
+            <Snackbar open={snackOpen}
+                autoHideDuration={4000}
+                onClose={handleClose}
+                TransitionComponent={TransitionRight}
+            >
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Post Deleted Successfully!
+                </Alert>
+            </Snackbar>
         </div>
     )
 }

@@ -38,9 +38,9 @@ route.get('/getComments', async (req, res) => {
 route.delete('/delComment/:id', authenticateOwner, async (req, res) => {
     try {
         const result = await commentModel.findByIdAndDelete(req.params.id);
-        res.status(200).json({ message: "Comment Deleted Successfully!" })
+        res.status(200).json({ message: "Comment Deleted Successfully!" });
     } catch (error) {
-        res.status(404).json({ message: "Comment Not Found" })
+        res.status(404).json({ message: "Comment Not Found" });
     }
 })
 

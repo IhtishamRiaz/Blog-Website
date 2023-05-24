@@ -6,17 +6,28 @@ const config = {
         authorization: localStorage.getItem('accessToken')
     }
 };
-
-const getAllPosts = (setBlogsList) => {
+// Get All Posts
+const getAllPosts = async (setBlogsList) => {
     axios
         .get(`${URL}/getPosts`)
         .then(({ data }) => {
             setBlogsList(data);
+            console.log('blogs called');
         })
         .catch((error) => {
         })
 }
 
+// Delete Post
+const deletePost = async (id) => {
+    try {
+        await axios.delete(`${URL}/deletePost/${id}`, config);
+    } catch (error) {
+
+    }
+}
+
+// Get All Users
 const getCurrentUser = async (setCurrentUser) => {
     try {
         const uderId = localStorage.getItem('currentUser');
@@ -40,7 +51,6 @@ const getAllComments = (setAllComments) => {
         .get(`${URL}/getComments`)
         .then(({ data }) => {
             setAllComments(data);
-            console.log('Comments Called');
         })
 }
 
@@ -60,4 +70,4 @@ const updateComment = async (commentData, idToEdit) => {
 }
 
 
-export { getAllPosts, getCurrentUser, getAllComments, deleteComment, updateComment, addComment };
+export { getAllPosts, getCurrentUser, getAllComments, deleteComment, updateComment, addComment, deletePost };

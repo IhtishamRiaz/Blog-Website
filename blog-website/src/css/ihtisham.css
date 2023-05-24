@@ -363,6 +363,9 @@ footer .footer-icons .fa-brands:hover {
   max-width: 1200px;
   margin: 50px 0;
 }
+.img-upload-btn img {
+  width: 100%;
+}
 
 .input-fields-container {
   display: flex;
