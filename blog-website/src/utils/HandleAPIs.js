@@ -12,7 +12,6 @@ const getAllPosts = async (setBlogsList) => {
         .get(`${URL}/getPosts`)
         .then(({ data }) => {
             setBlogsList(data);
-            console.log('blogs called');
         })
         .catch((error) => {
         })
@@ -27,7 +26,7 @@ const deletePost = async (id) => {
     }
 }
 
-// Get All Users
+// Get Current User
 const getCurrentUser = async (setCurrentUser) => {
     try {
         const uderId = localStorage.getItem('currentUser');

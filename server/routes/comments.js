@@ -20,7 +20,7 @@ route.post('/addComment', authenticateAll, async (req, res) => {
         await comment.save();
         res.status(201).json({ message: "Comment Added Successfully!" });
     } catch (error) {
-        res.status(500).json({ message: "Internal Server Error" });
+        res.status(500).json({ message: error.message });
     }
 });
 

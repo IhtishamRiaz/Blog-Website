@@ -23,7 +23,7 @@ const commentSchema = new mongoose.Schema({
     },
     commentAuthorImg: {
         type: String,
-        required: true
+        default: ''
     },
     postId: {
         type: String,

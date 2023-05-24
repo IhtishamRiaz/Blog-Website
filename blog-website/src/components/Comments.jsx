@@ -3,7 +3,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { red } from '@mui/material/colors';
-import axios from 'axios';
 import { blogs } from '../context/BlogsProvider';
 import { addComment, deleteComment, getAllComments, updateComment } from '../utils/HandleAPIs';
 
@@ -25,6 +24,7 @@ const Comments = ({ postId }) => {
     const [commentsArray, setCommentsArray] = useState(allComments);
     const [snackOpen, setSnackOpen] = useState(false);
     const [snackMessage, setSnackMessage] = useState('');
+    const [severity, setSeverity] = useState('');
     const [idToEdit, setIdToEdit] = useState();
     const [isEdit, setIsEdit] = useState(false);
     const [ratingValue, setRatingValue] = useState(0);
@@ -34,7 +34,8 @@ const Comments = ({ postId }) => {
         ratings: 0,
     });
 
-    const snackOpener = (message) => {
+    const snackOpener = (message, sev) => {
+        setSeverity(sev);
         setSnackMessage(message);
         setSnackOpen(true);
     }
@@ -86,23 +87,23 @@ const Comments = ({ postId }) => {
                         setRatingValue(0);
                         getAllComments(setAllComments);
                         setTimeout(() => {
-                            snackOpener('Comment Added!');
+                            if (JSON.stringify(currentUser) === '{}') {
+                                snackOpener('You need to Login!', 'error');
+                            } else {
+                                snackOpener('Comment Added!', 'success');
+                            }
                         }, 200);
                     })
             }
         }
     }
-
     // Handle Delete
     const delComment = async (id) => {
         await deleteComment(id);
         getAllComments(setAllComments);
         setTimeout(() => {
-            snackOpener('Comment Deleted!');
+            snackOpener('Comment Deleted!', 'success');
         }, 200);
-        const tempArray = [...commentsArray];
-        tempArray.splice(id, 1);
-        setCommentsArray(tempArray);
     }
 
     const editComment = (id) => {
@@ -116,10 +117,11 @@ const Comments = ({ postId }) => {
         })
         setIdToEdit(id);
         setIsEdit(true);
-        setRatingValue(commentToBeEdited.ratings)
+        setRatingValue(commentToBeEdited.ratings);
+        window.scrollTo(0, 1000);
     }
 
-    // Submit Comment
+    // Submit Edited Comment
     const submitEditedComment = () => {
         const commentData = {
             commentContent: commentInput.commentText,
@@ -136,7 +138,7 @@ const Comments = ({ postId }) => {
                 setRatingValue(0);
                 getAllComments(setAllComments);
                 setTimeout(() => {
-                    snackOpener('Comment Updated!');
+                    snackOpener('Comment Updated!', 'success');
                 }, 200);
             });
 
@@ -243,7 +245,6 @@ const Comments = ({ postId }) => {
                                                         </Tooltip>
                                                     </> : <></>
                                             }
-
                                         </div>
                                     </div>
                                     <div className="comment-ratings">
@@ -261,7 +262,7 @@ const Comments = ({ postId }) => {
                 onClose={handleClose}
                 TransitionComponent={TransitionRight}
             >
-                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                <Alert onClose={handleClose} severity={`${severity}`} sx={{ width: '100%' }}>
                     {snackMessage}
                 </Alert>
             </Snackbar>

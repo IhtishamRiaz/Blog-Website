@@ -108,14 +108,6 @@ const Login = ({ setIsAuthenticated }) => {
                             style={inputStyle}
                             onChange={handleChange}
                         />
-                        {/* <TextField
-                            type={"password"}
-                            name='password'
-                            value={inputs.password}
-                            label="Password"
-                            style={inputStyle}
-                            onChange={handleChange}
-                        /> */}
                         <FormControl sx={{ width: '100%' }} variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                             <OutlinedInput
