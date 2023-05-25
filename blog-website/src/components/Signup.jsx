@@ -89,7 +89,7 @@ const Signup = () => {
         formData.append("password", inputs.password);
         formData.append("cPassword", inputs.cPassword);
 
-        const URL = "http://localhost:8080";
+        const URL = process.env.REACT_APP_API_URL;
 
         axios.post(`${URL}/register`, formData)
             .then(() => {

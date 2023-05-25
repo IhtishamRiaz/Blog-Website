@@ -58,7 +58,7 @@ const Login = ({ setIsAuthenticated }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const URL = "http://localhost:8080";
+        const URL = process.env.REACT_APP_API_URL;
 
         axios.post(`${URL}/login`, inputs)
             .then((response) => {

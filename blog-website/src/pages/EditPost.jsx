@@ -31,7 +31,7 @@ const EditPost = () => {
         setPostTitle(currentPost?.title);
         setPostCategory(currentPost?.category);
         title.current.value = currentPost?.title;
-        setImgUrl(`http://localhost:8080/public/images/${currentPost?.postImage}`);
+        setImgUrl(`${process.env.REACT_APP_IMAGES_URL}${currentPost?.postImage}`);
         window.scrollTo(0, 0);
     }, [currentPost])
 
@@ -75,7 +75,8 @@ const EditPost = () => {
                 authorization: localStorage.getItem('accessToken')
             }
         };
-        axios.patch(`http://localhost:8080/editPost/${postId}`, formData, config)
+        const url = process.env.REACT_APP_API_URL;
+        axios.patch(`${url}/editPost/${postId}`, formData, config)
             .then((result) => {
                 setSnackOpen(true);
                 setTimeout(() => {

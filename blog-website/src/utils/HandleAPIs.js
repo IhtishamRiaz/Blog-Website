@@ -1,11 +1,12 @@
 import axios from "axios";
 
-const URL = "http://localhost:8080";
+const URL = process.env.REACT_APP_API_URL;
 const config = {
     headers: {
         authorization: localStorage.getItem('accessToken')
     }
 };
+
 // Get All Posts
 const getAllPosts = async (setBlogsList) => {
     axios

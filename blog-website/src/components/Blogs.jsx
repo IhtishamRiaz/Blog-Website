@@ -90,7 +90,7 @@ const Blogs = () => {
                 {
                     searchedList?.slice(indexOfFirstPost, indexOfLastPost)?.map((item) => {
                         const { _id, title, postImage } = item;
-                        const url = "http://localhost:8080/public/images/"
+                        const url = process.env.REACT_APP_IMAGES_URL
                         return (
                             <Link className="blog-box route-link" key={_id} to={`post/${_id}`}>
                                 <div className="blog-pic" >

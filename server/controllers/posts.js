@@ -1,23 +1,8 @@
-const express = require('express');
-const multer = require('multer');
 const postModel = require('../Schema/postSchema');
-const route = express.Router();
-const { authenticate, authenticatePostOwner } = require('../controllers/jwt-controller');
 const commentModel = require('../Schema/commentSchema');
 
-// Post Pic
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'public/images')
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '_' + file.originalname);
-    }
-})
-const upload = multer({ storage: storage });
-
-// create Posts
-route.post('/createPost', authenticate, upload.single('postImage'), async (req, res) => {
+// Create Post
+const createPost = async (req, res) => {
     try {
         const postImage = req.file.filename;
         const { title, postContent, category, postAuthor, postAuthorId, postAuthorImg } = req.body;
@@ -35,20 +20,20 @@ route.post('/createPost', authenticate, upload.single('postImage'), async (req, 
     } catch (error) {
         res.status(500).json("Internal Server Error!")
     }
-});
+};
 
-// get Posts
-route.get('/getPosts', async (req, res) => {
+// Get All Posts
+const getAllPosts = async (req, res) => {
     try {
         const result = await postModel.find({});
         res.status(201).json(result);
     } catch (error) {
         res.status(404).json("Posts Not Found!");
     }
-})
+};
 
 // Edit Post
-route.patch('/editPost/:id', authenticatePostOwner, upload.single('postImage'), async (req, res) => {
+const editPost = async (req, res) => {
     try {
         const { title, postContent, category } = req.body;
         const fieldsToUpdate = {
@@ -65,10 +50,10 @@ route.patch('/editPost/:id', authenticatePostOwner, upload.single('postImage'), 
     } catch (error) {
         res.status(304).json({ message: "Couldn't Update Post!" });
     }
-})
+};
 
 // Delete Posts
-route.delete('/deletePost/:id', authenticatePostOwner, async (req, res) => {
+const deletePost = async (req, res) => {
     try {
         const postId = req.params.id;
         const allComments = await commentModel.find({});
@@ -87,6 +72,6 @@ route.delete('/deletePost/:id', authenticatePostOwner, async (req, res) => {
     } catch (error) {
         res.status(404).json({ message: "Post Not Found!" });
     }
-})
+};
 
-module.exports = route;
+module.exports = { createPost, getAllPosts, editPost, deletePost }

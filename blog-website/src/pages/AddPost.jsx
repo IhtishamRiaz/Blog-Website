@@ -61,7 +61,8 @@ const AddPost = () => {
                 authorization: localStorage.getItem('accessToken')
             }
         };
-        axios.post("http://localhost:8080/createPost", formData, config)
+        const url = process.env.REACT_APP_API_URL;
+        axios.post(`${url}/createPost`, formData, config)
             .then((result) => {
                 console.log(result);
                 setSnackOpen(true);

@@ -47,7 +47,7 @@ const Post1 = () => {
         setSnackOpen(false);
     };
 
-    const url = "http://localhost:8080/public/images/"
+    const url = process.env.REACT_APP_IMAGES_URL
     return (
         <div className='post-page page'>
             <div className="my-container">

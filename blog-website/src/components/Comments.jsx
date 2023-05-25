@@ -220,7 +220,7 @@ const Comments = ({ postId }) => {
                                         <div className="comment-author">
                                             <Avatar
                                                 alt={commentAuthor}
-                                                src={`http://localhost:8080/public/images/${commentAuthorImg}`}
+                                                src={`${process.env.REACT_APP_IMAGES_URL}${commentAuthorImg}`}
                                                 sx={{ width: 40, height: 40 }}
                                             />
                                             <h3>{commentAuthor}</h3>

@@ -28,7 +28,7 @@ const Navbar = ({ isAuthenticated }) => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-    const url = "http://localhost:8080/public/images/"
+    const url = process.env.REACT_APP_IMAGES_URL
     return (
         <>
             <nav>
