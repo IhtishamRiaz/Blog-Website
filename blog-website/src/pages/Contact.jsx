@@ -43,8 +43,8 @@ const Contact = () => {
             <Box className='contact-page page'>
                 <header className='contact-header'>
                     <div className="my-container">
-                        <h1>Contact us</h1>
                         <p>Have a question or need assistance?<br />We are here to help you with anything you need!</p>
+                        <h1>Contact us</h1>
                     </div>
                 </header>
                 <div className="contact-container my-container">
@@ -93,6 +93,10 @@ const Contact = () => {
                                 value={contactInputs.message}
                             />
                             <Button
+                                style={{
+                                    backgroundColor: "#00000099",
+
+                                }}
                                 variant="contained"
                                 type='submit'
                                 size='large'
@@ -109,25 +113,25 @@ const Contact = () => {
                 <div className="contact-links my-container">
                     <div className="contact-link-box">
                         <div className="contact-icon">
-                            <LocationOnIcon color='primary' />
+                            <LocationOnIcon color='#00000099' />
                         </div>
                         <p><strong>Address:</strong>198 West 21th Street,<br />Suite 721 New York NY 10016</p>
                     </div>
                     <div className="contact-link-box">
                         <div className="contact-icon">
-                            <PhoneIcon color='primary' />
+                            <PhoneIcon color='#00000099' />
                         </div>
                         <p><strong>Phone:</strong>+123 456 789</p>
                     </div>
                     <div className="contact-link-box">
                         <div className="contact-icon">
-                            <EmailIcon color='primary' />
+                            <EmailIcon color='#00000099' />
                         </div>
                         <p><strong>Email:</strong>info@sample.com</p>
                     </div>
                     <div className="contact-link-box">
                         <div className="contact-icon">
-                            <LinkedInIcon color='primary' />
+                            <LinkedInIcon color='#00000099' />
                         </div>
                         <p><strong>Linkedin:</strong>https://www.linkedin.com</p>
                     </div>

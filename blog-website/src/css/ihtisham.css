@@ -59,7 +59,7 @@ nav .nav-link {
 }
 
 nav .nav-link:hover {
-  color: #1976D2;
+  color: #00000099;
 }
 
 nav .nav-logo img {
@@ -227,25 +227,22 @@ nav .menu-btn {
 }
 
 .contact-header {
-  height: 18.75rem;
-  width: 95%;
-  margin: 0 auto;
-  margin-top: 3.125rem;
-  border-radius: 32px;
-  background: linear-gradient(90deg, rgba(27, 27, 27, 0.8) 0%, rgba(27, 27, 27, 0.4) 100%), url(../images/Contact-bg.jpg);
+  height: 40.75rem;
+  background: linear-gradient(90deg, rgba(27, 27, 27, 0.8) 0%, rgba(27, 27, 27, 0.4) 100%), url(../images/Contact-bgg.jpg);
   background-repeat: no-repeat;
-  background-position: center;
   background-size: cover;
+  background-position: 0% 47%;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
+  /* color: white; */
 }
 
 .contact-header h1 {
   font-size: 3.375rem;
-  margin-bottom: 1.5625rem;
+  margin-top: 1.5625rem;
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
 }
@@ -265,7 +262,7 @@ nav .menu-btn {
 }
 
 .contact-container .contact-form h1 {
-  color: #1976D2;
+  color: #1b1b1b;
   margin-bottom: 1.25rem;
 }
 
@@ -332,7 +329,8 @@ footer .footer-icons .fa-brands {
 }
 
 footer .footer-icons .fa-brands:hover {
-  color: #f18e95;
+  color: #1b1b1b;
+  text-shadow: 0px 0px 5px white;
 }
 
 .post-page {
