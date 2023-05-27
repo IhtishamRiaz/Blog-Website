@@ -86,6 +86,7 @@ const Blogs = () => {
                     />
                 </div>
             </div>
+            <div className='blogs-border'></div>
             <div className="blogs-container">
                 {
                     searchedList?.slice(indexOfFirstPost, indexOfLastPost)?.map((item) => {
