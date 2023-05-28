@@ -46,7 +46,7 @@ const authenticateOwner = async (req, res, next) => {
         req.user = user;
         next();
     });
-}
+};
 
 const authenticatePostOwner = async (req, res, next) => {
     const authHeader = req.headers['authorization'];
@@ -63,5 +63,5 @@ const authenticatePostOwner = async (req, res, next) => {
         req.user = user;
         next();
     });
-}
+};
 module.exports = { authenticate, authenticateAll, authenticateOwner, authenticatePostOwner };
