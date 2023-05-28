@@ -50,13 +50,13 @@ const Policy = () => {
                     <h2>How do we protect your information?</h2>
                     <p>
                         We take data security seriously and use industry-standard measures to
-                        protect your personal information. However, please note that no website or
+                        protect your personal information. <br />However, please note that no website or
                         electronic storage system can guarantee complete security.
                     </p>
                     <h2>Do we share your information with third parties?</h2>
                     <p>
                         We do not sell or share your personal information with third parties, except
-                        as required by law or as necessary to fulfill our contractual obligations
+                        as required by law or as necessary to <br />fulfill our contractual obligations
                         with you (such as providing your email address to our email newsletter
                         service provider).
                     </p>

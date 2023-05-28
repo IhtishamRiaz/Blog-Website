@@ -68,11 +68,11 @@ const Blogs = () => {
                         variant="scrollable"
                         scrollButtons="auto"
                     >
-                        <Tab label='All' style={{ fontWeight: '800' }}></Tab>
-                        <Tab label='Travel' style={{ fontWeight: '800' }}></Tab>
-                        <Tab label='Cricket' style={{ fontWeight: '800' }}></Tab>
-                        <Tab label='Development' style={{ fontWeight: '800' }}></Tab>
-                        <Tab label='Artificial Intelligence' style={{ fontWeight: '800' }}></Tab>
+                        <Tab label='All' style={{ fontWeight: '600' }}></Tab>
+                        <Tab label='Travel' style={{ fontWeight: '600' }}></Tab>
+                        <Tab label='Cricket' style={{ fontWeight: '600' }}></Tab>
+                        <Tab label='Development' style={{ fontWeight: '600' }}></Tab>
+                        <Tab label='Artificial Intelligence' style={{ fontWeight: '600' }}></Tab>
                     </Tabs>
                 </div>
 
@@ -86,6 +86,7 @@ const Blogs = () => {
                     />
                 </div>
             </div>
+            <div className='blogs-border'></div>
             <div className="blogs-container">
                 {
                     searchedList?.slice(indexOfFirstPost, indexOfLastPost)?.map((item) => {

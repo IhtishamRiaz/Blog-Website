@@ -26,7 +26,7 @@ const About = () => {
                 <div className='main-bg my-container'>
                     <div className='my-container'>
                         <div className='content'>
-                            <h1 className='main-heading'>About Our Leadership <br /> and Beliefs</h1>
+                            <h1 className='main-heading'>Leadership <br /> and Beliefs</h1>
                             <p className='main-para'>Newbreak Church is all about, "Connecting <br />
                                 people with God through authentic relationships <br />
                                 to serve communities."</p>

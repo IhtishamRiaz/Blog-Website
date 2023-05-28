@@ -25,6 +25,7 @@ const inputStyle = {
 }
 const btnStyle = {
     marginTop: '15px',
+    color: '#1b1b1b',
 }
 const btnContStyle = {
     display: 'flex',
