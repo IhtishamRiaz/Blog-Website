@@ -134,7 +134,7 @@ const Login = ({ setIsAuthenticated }) => {
                         </FormControl>
                         {
                             error &&
-                            <p>{error}</p>
+                            <div className='error-container'><p>{error}</p></div>
                         }
                         <Box style={btnContStyle}>
                             <Button

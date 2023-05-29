@@ -188,22 +188,6 @@ const Signup = () => {
                                 />
                             </RadioGroup>
                         </FormControl>
-                        {/* <TextField
-                            type={"password"}
-                            name='password'
-                            value={inputs.password}
-                            label="Password"
-                            style={inputStyle}
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            type={"password"}
-                            name='cPassword'
-                            value={inputs.cPassword}
-                            label="Confirm Password"
-                            style={inputStyle}
-                            onChange={handleChange}
-                        /> */}
 
                         {/* Password Field */}
                         <FormControl sx={{ width: '100%' }} variant="outlined">

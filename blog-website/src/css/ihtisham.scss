@@ -16,6 +16,10 @@ $secondary-color: #f18e95;
     min-height: calc(100vh - 7.8125rem);
 }
 
+.error-container {
+    color: red;
+}
+
 .my-container {
     width: 1200px;
     margin: 0 auto;
