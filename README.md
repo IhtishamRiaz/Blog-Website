@@ -1,4 +1,4 @@
-"# Fit Grocer - Online Food Delivery App
+# Fit Grocer - Online Food Delivery App
 
 Welcome to Fit Grocer, your go-to online food delivery app! This application is built with Vite and React, providing a seamless and efficient experience for users to order their favorite meals from the comfort of their homes.
 
