@@ -15,15 +15,22 @@ Make sure you have Node.js and npm installed on your machine.
 1. Clone the repository:
 
 ```bash
-   git clone https://github.com/your-username/fit-grocer.git
+git clone https://github.com/your-username/fit-grocer.git
 ```
 
 2. Navigate to the project directory:
 ```bash
-   cd fit-grocer
+cd fit-grocer
 ```
 
 3. Install dependencies:
 ```bash
-   npm run dev
+npm install
 ```
+### Running the Application
+Once the installation is complete, you can run the Fit Grocer app:
+
+```bash
+npm run dev
+```
+This will start the development server. Open your browser and navigate to [http://localhost:5173](http://localhost:5173) to access the Fit Grocer app.
