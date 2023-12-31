@@ -17,3 +17,13 @@ Make sure you have Node.js and npm installed on your machine.
 ```bash
    git clone https://github.com/your-username/fit-grocer.git
 ```
+
+2. Navigate to the project directory:
+```bash
+   cd fit-grocer
+```
+
+3. Install dependencies:
+```bash
+   npm run dev
+```
